@@ -1,0 +1,26 @@
+[
+    {
+        "_id": 1,
+        "name": "Alex Leeman",
+        "position" : "Director",
+        "img": "https://i.ibb.co/SsdcWfC/t01.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "Diago Johnson",
+        "position" : "Sales Manager",
+        "img": "https://i.ibb.co/mvx9jHC/t02.jpg"
+    },
+    {
+        "_id": 3,
+        "name": "Mitu Akter",
+        "position" : "Director",
+        "img": "https://i.ibb.co/GcCwvTk/t03.jpg"
+    },
+    {
+        "_id": 4,
+        "name": "William Henry",
+        "position" : "Marketing",
+        "img": "https://i.ibb.co/t8LLLjm/t04.jpg"
+    }
+]

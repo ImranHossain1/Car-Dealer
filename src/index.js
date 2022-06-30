@@ -9,9 +9,18 @@ import {
   QueryClientProvider,
 } from 'react-query';
 import { HelmetProvider } from 'react-helmet-async';
+import { ThemeProvider } from '@mui/styles';
+import { createTheme } from '@mui/material';
+const theme = createTheme({
+  zIndex: {
+    appBar: 1251,
+    modal: 1250,
+  }
+});
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <ThemeProvider theme={theme}>
   <HelmetProvider>
       <React.StrictMode>
       <QueryClientProvider client={queryClient}>
@@ -21,6 +30,7 @@ root.render(
       </QueryClientProvider>
     </React.StrictMode>
   </HelmetProvider>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,0 +1,58 @@
+[
+    {
+        "_id": 1,
+        "type": "Sedan",
+        "offer" : 4,
+        "price": 42000,
+        "img": "https://i.ibb.co/dgBRzJ3/1.png"
+    },
+    {
+        "_id": 2,
+        "type": "Sport",
+        "offer" : 8,
+        "price": 32000,
+        "img": "https://i.ibb.co/PwLN4rm/2.png"
+    },
+    {
+        "_id": 3,
+        "type": "Super Car",
+        "offer" : 8,
+        "price": 52000,
+        "img": "https://i.ibb.co/0MFvHmQ/3.png"
+    },
+    {
+        "_id": 4,
+        "type": "Luxury",
+        "offer" : 4,
+        "price": 60000,
+        "img": "https://i.ibb.co/C5HVPjN/4.png"
+    },
+    {
+        "_id": 5,
+        "type": "Pickups",
+        "offer" : 5,
+        "price": 20000,
+        "img": "https://i.ibb.co/pwSgVmv/5.png"
+    },
+    {
+        "_id": 6,
+        "type": "SUV",
+        "offer" : 4,
+        "price": 25000,
+        "img": "https://i.ibb.co/sVvL7NF/6.png"
+    },
+    {
+        "_id": 7,
+        "type": "Truck",
+        "offer" : 6,
+        "price": 28000,
+        "img": "https://i.ibb.co/pwSgVmv/5.png"
+    },
+    {
+        "_id": 8,
+        "type": "Van",
+        "offer" : 4,
+        "price": 15000,
+        "img": "https://i.ibb.co/6mR0byv/8.png"
+    }
+]
