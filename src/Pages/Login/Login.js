@@ -9,6 +9,8 @@ import loginBg from '../../assets/images/carImages/loginbg.jpg'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
+import Navbar from '../Shared/Navbar';
+import Footer from '../Shared/Footer';
 const bannerBg = {
     flexGrow: 1,
     //padding: theme.spacing(3),
@@ -54,7 +56,9 @@ const Login = () => {
     };
     //console.log(user)
     return (
-        <Box sx={bannerBg} style={{display:'flex', alignItems:'center', justifyContent:'center'}} >
+       <>
+       <Navbar></Navbar>
+       <Box sx={bannerBg} style={{display:'flex', alignItems:'center', justifyContent:'center'}} >
                  <Box 
                     style={{
                         // borderRadius: '5%',
@@ -117,6 +121,7 @@ const Login = () => {
                         </form>
                 </Box>
         </Box>
+        </>
     );
 };
 

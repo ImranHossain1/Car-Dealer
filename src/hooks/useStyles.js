@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles({
     btn: {
       background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
       border: 0,
@@ -33,6 +33,6 @@ const useStyles = makeStyles((theme)=>({
         }
     }
 
-}));
+});
 
 export default useStyles;

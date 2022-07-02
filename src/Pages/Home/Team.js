@@ -12,7 +12,7 @@ const Team = ({member}) => {
                     image={img}
                     alt="green iguana"
                 />
-                <CardContent style={{color: '#1d242e'}}>
+                <CardContent style={{color: '#1d242e', display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <Typography variant="h5" component="div">
                         {name}
                     </Typography>

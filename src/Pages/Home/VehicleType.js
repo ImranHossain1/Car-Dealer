@@ -12,7 +12,7 @@ const VehicleType = ({t}) => {
                     image={img}
                     alt="green iguana"
                 />
-                <CardContent style={{color: 'white'}}>
+                <CardContent style={{color: 'white', display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <Typography variant="h5" component="div">
                         {type}
                     </Typography>

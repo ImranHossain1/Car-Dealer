@@ -9,6 +9,7 @@ import loginBg from '../../assets/images/carImages/loginbg.jpg'
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
+import Navbar from '../Shared/Navbar';
 const bannerBg = {
     flexGrow: 1,
     //padding: theme.spacing(3),
@@ -51,6 +52,8 @@ const Register = () => {
         await updateProfile({ displayName: data.name });
     };
     return (
+        <>
+        <Navbar></Navbar>
         <Box sx={bannerBg} style={{display:'flex', alignItems:'center', justifyContent:'center'}} >
                  <Box 
                     style={{
@@ -137,6 +140,7 @@ const Register = () => {
                         </form>
                 </Box>
         </Box>
+        </>
     );
 };
 

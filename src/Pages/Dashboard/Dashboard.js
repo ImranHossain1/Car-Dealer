@@ -29,7 +29,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Profile from './Profile';
 import Users from './Users';
 const drawerWidth = 240;
-const pages = ['home', 'shop', 'gallery'];
+const pages = ['home', 'vehicles', 'gallery'];
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -267,8 +267,15 @@ export default function Dashboard() {
                         <Button color="inherit">Users</Button>
                 </Link>
               </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                   <MailIcon />
+                </ListItemIcon>
+                <Link to='/dashboard/addvhicle' style={{textDecoration:"none", color: 'black'}}>
+                        <Button color="inherit">Add vehicle</Button>
+                </Link>
+              </ListItemButton>
             </ListItem>
-
         </List>
         <Divider />
         <List>

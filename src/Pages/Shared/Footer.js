@@ -63,7 +63,7 @@ const Footer = () => {
                             </Box>
                         </Grid>
                     </Grid>
-                    <Box sx={{mt:4}} >
+                    <Box sx={{mt:4}} style={{display:'flex', justifyContent:'center'}}>
                         <a href='https://www.facebook.com/imran1402/'><FacebookRoundedIcon style={{color: "#03B3FA"}} fontSize="large"></FacebookRoundedIcon></a>
                         <a href="https://github.com/ImranHossain1"><GitHubIcon style={{color: "white"}} sx={{mx: 5}} fontSize="large"></GitHubIcon></a>
                         <a href="https://www.instagram.com/imranhsn14/"><InstagramIcon style={{color: "#F0622D"}} fontSize="large"></InstagramIcon></a>

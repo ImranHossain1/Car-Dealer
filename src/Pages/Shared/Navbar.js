@@ -19,7 +19,7 @@ import useStyles from '../../hooks/useStyles';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
-const pages = ['home', 'shop', 'gallery'];
+const pages = ['home', 'vehicles', 'gallery'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
