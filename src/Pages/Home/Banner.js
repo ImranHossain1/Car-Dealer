@@ -24,7 +24,7 @@ const Banner = () => {
         <Box sx={{ flexGrow: 1, mt:8}} style={bannerBg} minHeight={{md:'100vh'}}>
             <Grid container spacing={4} direction={{xs: "column", md: "row-reverse"}} sx={{ mt: 0}}>
                 <Grid item xs={12} md={6} style={verticalCenter} sx={{justifyContent:"center" }} >
-                    <img src={car1} style={{width: '75%', borderRadius: '10%'}}/>
+                    <img src={car1} style={{width: '75%', borderRadius: '10%'}} className='pics'/>
                 </Grid>
                 <Grid item xs={12} md={6} style={{ ...verticalCenter,textAlign: 'left'}}>
                     <Grid

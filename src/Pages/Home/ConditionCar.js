@@ -2,11 +2,11 @@ import { Button, Card, CardContent, CardMedia, Divider, Grid, Typography } from 
 import React from 'react';
 import useStyles from '../../hooks/useStyles';
 
-const ExclusiveCar = ({vehicle}) => {
+const ConditionCars = ({vehicle}) => {
     const classes = useStyles();
     const {company, vehicleModel, catagory, condition, cost, img}= vehicle;
     return (
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3} className='pics'>
             <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 2,backgroundColor: '#1d242e', opacity:0.95}}>
                 <CardMedia
                     component="img"
@@ -38,4 +38,4 @@ const ExclusiveCar = ({vehicle}) => {
     );
 };
 
-export default ExclusiveCar;
+export default ConditionCars;

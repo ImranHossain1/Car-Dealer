@@ -11,7 +11,7 @@ const Vehicles = () => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(12);
     const [vehicles, setVehicles] = useState([]);
-
+    //const condition= 'Premium'
     function handlePagination (event) {
         setPage(parseInt(event.target.textContent)-1)
         }

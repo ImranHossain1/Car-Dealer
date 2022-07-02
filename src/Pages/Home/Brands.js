@@ -14,24 +14,27 @@ const Brands = () => {
                 <Typography variant ="h3" sx={{mt:4, mb:10, color: '#1C2833', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>
                     Our <span style={{color:'orange'}}>Brands</span>
                 </Typography>
-                <Grid container spacing={{ xs: 3, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} style={{alighItems:'center'}}>
-                    <Grid item xs={6} sm={4} md={2}>
-                        <img src={bmw} alt="" style={{width:'60%',}} />
+                <Grid container 
+                spacing={{ xs: 3, md: 3 }} 
+                columns={{ xs: 12, sm: 12, md: 12 }} 
+                style={{alighItems:'center'}} >
+                    <Grid item xs={6} sm={4} md={2} className='pics'>
+                        <img src={bmw} alt="" style={{width:'100%',}} />
+                    </Grid>
+                    <Grid item xs={6} sm={4} md={2} className='pics'>
+                        <img src={audi} alt="" style={{width:'100%'}} className='pics'/>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
-                        <img src={audi} alt="" style={{width:'100%'}} />
+                        <img src={mercedes} alt="" style={{width:'100%'}} className='pics'/>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
-                        <img src={mercedes} alt="" style={{width:'100%'}} />
+                        <img src={ferrari} alt="" style={{width:'100%'}} className='pics' />
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
-                        <img src={ferrari} alt="" style={{width:'60%'}} />
+                        <img src={volvo} alt="" style={{width:'100%'}} className='pics'/>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
-                        <img src={volvo} alt="" style={{width:'100%'}} />
-                    </Grid>
-                    <Grid item xs={6} sm={4} md={2}>
-                        <img src={porsche} alt="" style={{width:'100%'}} />
+                        <img src={porsche} alt="" style={{width:'100%'}} className='pics'/>
                     </Grid>
                 </Grid>
             </Container>

@@ -15,6 +15,7 @@ import AddViechels from './Pages/Dashboard/AddVehicle';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Vehicles from './Pages/Shop/Vehicles';
+import ConditionalCars from './Pages/Shop/ConditionalCars';
 
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/registration' element={<Register/>}/>
             <Route path='/vehicles' element={<RequireAuth><Vehicles/></RequireAuth>}/>
+            <Route path='/vehicles/:condition' element={<RequireAuth><ConditionalCars/></RequireAuth>}/>
             <Route path='dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>
               <Route index element={<Profile></Profile>}></Route>
               <Route path='users' element={<Users></Users>}></Route>

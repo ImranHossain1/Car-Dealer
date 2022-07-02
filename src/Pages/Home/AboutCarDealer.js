@@ -7,7 +7,7 @@ import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
 import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 const AboutCarDealer = () => {
     return (
-        <Box sx={{ flexGrow: 1 , mt : 3 }} >
+        <Box sx={{ flexGrow: 1 , my : 3 }} >
             <Container disableGutters >
                 <Box >
                 <Typography variant ="h3" sx={{my:5, color: '#1C2833', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>
@@ -52,7 +52,7 @@ const AboutCarDealer = () => {
                             </CardContent>
                         </Card>        
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} className='pics'>
                         <img src={g01} alt="" style={{width:'100%'}} />    
                     </Grid>
 

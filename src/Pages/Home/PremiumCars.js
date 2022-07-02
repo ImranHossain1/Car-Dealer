@@ -7,11 +7,12 @@ import useStyles from '../../hooks/useStyles';
 import Loading from '../Shared/Loading';
 import ConditionCars from './ConditionCar';
 
-const ExclusiveCars = () => {
+
+const PremiumCars = () => {
     const classes = useStyles();
 
-    const condition ='Exclusive';
-    const {data:vehicles, isLoading, refetch} = useQuery(['ExclusiveVehicles'], ()=>fetch(`http://localhost:5000/vehicles/${condition}`,{
+    const condition ='Premium';
+    const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`http://localhost:5000/vehicles/${condition}`,{
         method: 'GET'
     }).then(res=>res.json()));
     if(isLoading){
@@ -43,4 +44,4 @@ const ExclusiveCars = () => {
     );
 };
 
-export default ExclusiveCars;
+export default PremiumCars;
