@@ -1,17 +1,36 @@
 import { Grid, Pagination, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../Shared/Navbar';
 import Vehicle from './Vehicle';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
 const Vehicles = () => {
-    const {data: vehicles, isLoading} = useQuery(["vehicles"], ()=>fetch('http://localhost:5000/vehicles').then(res=>res.json()));
-    if(isLoading){
-        <Loading></Loading>
-    }
-    console.log(vehicles)
+    const [pageCount, setPageCount] = useState(0);
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(12);
+    const [vehicles, setVehicles] = useState([]);
+
+    function handlePagination (event) {
+        setPage(parseInt(event.target.textContent)-1)
+        }
+    useEffect( () =>{
+        fetch(`http://localhost:5000/vehicles?page=${page}&size=${size}`)
+        .then(res => res.json())
+        .then(data => setVehicles(data));
+    }, [page, size]);
+
+    useEffect( () =>{
+        fetch('http://localhost:5000/vehicleCount')
+        .then(res => res.json())
+        .then(data =>{
+            const count = data.count;
+            const pages = Math.ceil(count/12);
+            setPageCount(pages);
+        })
+    }, [])
+    //console.log(vehicles)
     return (
         <>
             <Navbar></Navbar>
@@ -27,7 +46,11 @@ const Vehicles = () => {
                         </Vehicle>)
                     }
                 </Grid>
-                <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton sx={{my:5}} style={{display:'flex' ,justifyContent: 'center'}}/>
+                <Pagination count={pageCount} 
+                    onChange={handlePagination}
+                    variant="outlined" shape="rounded" 
+                    showFirstButton showLastButton sx={{my:5}} 
+                    style={{display:'flex' ,justifyContent: 'center'}}/>
 
             </Container>
             </Box>

@@ -57,10 +57,16 @@ const AddViechels = () => {
                    if(inserted.insertedId){
                        toast.success('New Travel Destination Added Successfully');
                        reset();
+                       setCondition('Exclusive');
+                       setCompany('BMW');
+                       setCategory('Sedan')
                        setDisabledButton(true)
                    }
                    else{
                        toast.error('Failed to add this Destination')
+                       setCondition('Exclusive');
+                       setCompany('BMW');
+                       setCategory('Sedan')
                        setDisabledButton(true)
                    }
                 })
@@ -166,7 +172,11 @@ const AddViechels = () => {
                     <Stack sx={{ width: '50%',  m: 1 }} >
                         {errors.image?.type === 'required'  && <Alert severity="warning" >{errors.image.message}</Alert>}                    
                     </Stack>
-                    <Button variant='contained' type='submit' fullWidth >Add a new Vehicle</Button>
+                    {
+                        disabledButton ?
+                        <Button variant='contained' type='submit' fullWidth >Add a new Vehicle</Button>:
+                        <Button disabled variant='contained' type='submit' fullWidth >Add a new Vehicle</Button>
+                    }
                 </Box>
             </form>
         </Box>
