@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid';
 import {Typography , Button , Container} from '@mui/material';
 import Box from '@mui/material/Box';
 import { height } from '@mui/system';
+import useStyles from '../../hooks/useStyles';
+import { Link } from 'react-router-dom';
 
 const bannerBg = {
     backgroundImage: `url(${bannerCar})`,
@@ -20,6 +22,7 @@ const verticalCenter = {
 }
 
 const Banner = () => {
+    const classes = useStyles();
     return (
         <Box sx={{ flexGrow: 1, mt:8}} style={bannerBg} minHeight={{md:'100vh'}}>
             <Grid container spacing={4} direction={{xs: "column", md: "row-reverse"}} sx={{ mt: 0}}>
@@ -44,7 +47,7 @@ const Banner = () => {
                             fontSize={{xs:20, sm:30, lg:30}}>
                             When you have a great car, you want people to see the car
                         </Typography>
-                        <Button variant="contained"  style={{backgroundColor:' #5fe4b0 ', color:'black'}} hover={{backgroundColor:"black"}}>Shop Now</Button>
+                        <Link to='/vehicles' style={{textDecoration:'none'}}><Button variant="contained" className={classes.googlebtn} sx={{px:8}}>Explore Vehicles</Button></Link>
                     </Grid>
                 </Grid>
             </Grid>

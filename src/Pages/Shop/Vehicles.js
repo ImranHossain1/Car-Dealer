@@ -9,24 +9,24 @@ import Loading from '../Shared/Loading';
 const Vehicles = () => {
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
-    const [size, setSize] = useState(12);
+    const [size, setSize] = useState(4);
     const [vehicles, setVehicles] = useState([]);
-    //const condition= 'Premium'
-    function handlePagination (event) {
-        setPage(parseInt(event.target.textContent)-1)
-        }
+    function handlePagination (event, page) {
+        setPage (page-1)
+        window.scroll(0,0);
+    }
     useEffect( () =>{
-        fetch(`http://localhost:5000/vehicles?page=${page}&size=${size}`)
+        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles?page=${page}&size=${size}`)
         .then(res => res.json())
         .then(data => setVehicles(data));
     }, [page, size]);
 
     useEffect( () =>{
-        fetch('http://localhost:5000/vehicleCount')
+        fetch('https://thawing-ridge-58827.herokuapp.com/vehicleCount')
         .then(res => res.json())
         .then(data =>{
             const count = data.count;
-            const pages = Math.ceil(count/12);
+            const pages = Math.ceil(count/4);
             setPageCount(pages);
         })
     }, [])
@@ -49,7 +49,7 @@ const Vehicles = () => {
                 <Pagination count={pageCount} 
                     onChange={handlePagination}
                     variant="outlined" shape="rounded" 
-                    showFirstButton showLastButton sx={{my:5}} 
+                    sx={{my:5}} 
                     style={{display:'flex' ,justifyContent: 'center'}}/>
 
             </Container>

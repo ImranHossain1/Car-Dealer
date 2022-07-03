@@ -12,7 +12,7 @@ const PremiumCars = () => {
     const classes = useStyles();
 
     const condition ='Premium';
-    const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`http://localhost:5000/vehicles/${condition}`,{
+    const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles/${condition}`,{
         method: 'GET'
     }).then(res=>res.json()));
     if(isLoading){
@@ -34,12 +34,13 @@ const PremiumCars = () => {
                     }
                 </Grid>
             </Container>
-            <Button className={classes.googlebtn}
-                 variant='contained' 
-                 sx={{mx:"auto"}}
-                 style={{display:'flex' ,alignItems: 'center', justifyContent:'center'}}>
-                    <Link to={`/vehicles/${condition}`} style={{textDecoration:'none', color:'white'}}>See All {condition} Cars</Link>
-                </Button>
+            <Link to={`/vehicles/${condition}`} style={{textDecoration:'none', color:'white'}}>
+                    <Button className={classes.googlebtn}
+                    variant='contained' 
+                    sx={{mx:"auto"}}
+                    style={{display:'flex' ,alignItems: 'center', justifyContent:'center'}}>See All {condition} Cars
+                    </Button>
+            </Link>
         </Box>
     );
 };

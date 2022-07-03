@@ -17,8 +17,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Vehicles from './Pages/Shop/Vehicles';
 import ConditionalCars from './Pages/Shop/ConditionalCars';
 
-
-
 function App() {
   return (
         <>
@@ -27,8 +25,8 @@ function App() {
             <Route path='/home' element={<Home/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/registration' element={<Register/>}/>
-            <Route path='/vehicles' element={<RequireAuth><Vehicles/></RequireAuth>}/>
-            <Route path='/vehicles/:condition' element={<RequireAuth><ConditionalCars/></RequireAuth>}/>
+            <Route path='/vehicles' element={<Vehicles/>}/>
+            <Route path='/vehicles/:condition' element={<ConditionalCars/>}/>
             <Route path='dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>
               <Route index element={<Profile></Profile>}></Route>
               <Route path='users' element={<Users></Users>}></Route>

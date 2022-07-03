@@ -11,7 +11,7 @@ const ExclusiveCars = () => {
     const classes = useStyles();
 
     const condition ='Exclusive';
-    const {data:vehicles, isLoading, refetch} = useQuery(['ExclusiveVehicles'], ()=>fetch(`http://localhost:5000/vehicles/${condition}`,{
+    const {data:vehicles, isLoading, refetch} = useQuery(['ExclusiveVehicles'], ()=>fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles/${condition}`,{
         method: 'GET'
     }).then(res=>res.json()));
     if(isLoading){
@@ -33,12 +33,13 @@ const ExclusiveCars = () => {
                     }
                 </Grid>
             </Container>
-            <Button className={classes.googlebtn}
-                 variant='contained' 
-                 sx={{mx:"auto"}}
-                 style={{display:'flex' ,alignItems: 'center', justifyContent:'center'}}>
-                    <Link to={`/vehicles/${condition}`} style={{textDecoration:'none', color:'white'}}>See All {condition} Cars</Link>
-                </Button>
+                <Link to={`/vehicles/${condition}`} style={{textDecoration:'none', color:'white'}}>
+                    <Button className={classes.googlebtn}
+                    variant='contained' 
+                    sx={{mx:"auto"}}
+                    style={{display:'flex' ,alignItems: 'center', justifyContent:'center'}}>See All {condition} Cars
+                    </Button>
+                </Link>
         </Box>
     );
 };
