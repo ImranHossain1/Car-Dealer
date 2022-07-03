@@ -14,9 +14,10 @@ const ConditionalCars = () => {
     const [size, setSize] = useState(10);
     const [vehicles, setVehicles] = useState([]);
     //const condition= 'Premium'
-    function handlePagination (event) {
-        setPage(parseInt(event.target.textContent)-1)
-        }
+    function handlePagination (event, page) {
+        setPage (page-1)
+        window.scroll(0,0);
+    }
     useEffect( () =>{
         fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles?page=${page}&size=${size}&condition=${condition}`)
         .then(res => res.json())
