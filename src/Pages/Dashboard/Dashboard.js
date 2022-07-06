@@ -19,7 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import { Button, Menu, MenuItem } from '@mui/material';
+import { Button, Container, Menu, MenuItem } from '@mui/material';
 import { Link, Outlet, Route, Routes } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -28,18 +28,19 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Profile from './Profile';
 import Users from './Users';
+import Footer from '../Shared/Footer';
 const drawerWidth = 240;
 const pages = ['home', 'vehicles', 'gallery'];
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginRight: -drawerWidth,
+    marginRight: 0,
     ...(open && {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
@@ -53,17 +54,11 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
+  transition: theme.transitions.create(['margin', 'width']),
   ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: drawerWidth,
+    width: `100%`,
+    transition: theme.transitions.create(['margin', 'width']),
+    marginRight: 0,
   }),
 }));
 
@@ -110,13 +105,13 @@ export default function Dashboard() {
   });
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <div sx={{ display: 'flex' }} >
       <CssBaseline />
       <ThemeProvider theme={darkTheme}>
-        <AppBar position="fixed"sx={{px:2}} color="primary" enableColorOnDark>
-            <Toolbar>
-            <Box variant="h6" noWrap sx={{ flexGrow: 1 }} style={{display:'flex', justifyContent:'center', alignItems:'center'}} component="div">
-            <DirectionsCarIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>
+        <AppBar position="fixed" color="primary" enableColorOnDark>
+          <Container maxWidth="xl">
+            <Toolbar disableGutters>
+            <DirectionsCarIcon sx={{ display: { xs: 'none', md: 'flex' } , mr: 1 }}/>
 
             <Typography
                     variant="h6"
@@ -174,7 +169,7 @@ export default function Dashboard() {
                             onClick={handleCloseNavMenu}
                             sx={{ color: 'white', display: 'block' }}
                         >
-                            <Link style={{textDecoration: 'none', color:'black'}} to={`/${page}`}>{page}</Link>
+                            <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>{page}</Link>
                         </Button>
                         </Typography>
                         </MenuItem>
@@ -213,9 +208,8 @@ export default function Dashboard() {
                     ))}
                     
                 </Box>
-            </Box>
+            
             <IconButton
-                color="inherit"
                 aria-label="open drawer"
                 edge="end"
                 onClick={handleDrawerOpen}
@@ -224,11 +218,13 @@ export default function Dashboard() {
                 <MenuIcon />
             </IconButton>
             </Toolbar>
+            </Container>
         </AppBar>
       </ThemeProvider>
       <Main open={open}>
-        <DrawerHeader />
+          <DrawerHeader />
           <Outlet></Outlet>
+          
       </Main>
       <Drawer
         sx={{
@@ -238,7 +234,7 @@ export default function Dashboard() {
             width: drawerWidth,
           },
         }}
-        variant="persistent"
+        
         anchor="right"
         open={open}
       >
@@ -251,30 +247,30 @@ export default function Dashboard() {
 
         <List>
             <ListItem  style={{display:'block'}} disablePadding>
-              <ListItemButton >
-                <ListItemIcon>
-                   <MailIcon />
-                </ListItemIcon>
-                <Link to='/dashboard' style={{textDecoration:"none", color: 'black'}}>
-                        <Button color="inherit">Profile</Button>
-                </Link>
-              </ListItemButton> 
-            <ListItemButton>
-                <ListItemIcon>
-                   <MailIcon />
-                </ListItemIcon>
-                <Link to='/dashboard/users' style={{textDecoration:"none", color: 'black'}}>
-                        <Button color="inherit">Users</Button>
-                </Link>
-              </ListItemButton>
-            <ListItemButton>
-                <ListItemIcon>
-                   <MailIcon />
-                </ListItemIcon>
-                <Link to='/dashboard/addvhicle' style={{textDecoration:"none", color: 'black'}}>
-                        <Button color="inherit">Add vehicle</Button>
-                </Link>
-              </ListItemButton>
+              <Link to='/dashboard' style={{textDecoration:"none", color: 'black'}} >
+                <ListItemButton  sx={{p:2}}>
+                  <ListItemIcon>
+                    <MailIcon />
+                  </ListItemIcon>
+                    Profile
+                </ListItemButton> 
+              </Link>
+              <Link to='/dashboard/users' style={{textDecoration:"none", color: 'black'}} >
+                <ListItemButton sx={{p:2}}>
+                    <ListItemIcon>
+                      <MailIcon />
+                    </ListItemIcon>
+                          Users
+                </ListItemButton>
+              </Link>
+              <Link to='/dashboard/addvhicle' style={{textDecoration:"none", color: 'black'}}>
+                <ListItemButton sx={{p:2}}>
+                    <ListItemIcon>
+                      <MailIcon />
+                    </ListItemIcon>
+                            Add vehicle
+                </ListItemButton>
+              </Link>
             </ListItem>
         </List>
         <Divider />
@@ -296,6 +292,6 @@ export default function Dashboard() {
         </List>
 
       </Drawer>
-    </Box>
+    </div>
   );
 }

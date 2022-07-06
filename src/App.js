@@ -15,24 +15,37 @@ import AddViechels from './Pages/Dashboard/AddVehicle';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Vehicles from './Pages/Shop/Vehicles';
-import ConditionalCars from './Pages/Shop/ConditionalCars';
+import Dashboard2 from './Pages/Dashboard/Dashboard2';
+import { createTheme, ThemeProvider } from '@mui/material';
+import Gallery from './Pages/Shop/Gallery';
 
+const theme = createTheme({
+  zIndex: {
+    // appBar: 1251,
+    // modal: 1250
+  }
+});
 function App() {
   return (
         <>
+        <ThemeProvider theme={theme}>
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/registration' element={<Register/>}/>
             <Route path='/vehicles' element={<Vehicles/>}/>
-            <Route path='/vehicles/:condition' element={<ConditionalCars/>}/>
+            <Route path='/gallery' element={<Gallery/>}/>
+            {/* <Route path='/dashboard2' element={<Dashboard2/>}/> */}
+            <Route path='/vehicles/:cons' element={<Vehicles/>}/>
             <Route path='dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>
               <Route index element={<Profile></Profile>}></Route>
               <Route path='users' element={<Users></Users>}></Route>
               <Route path='addvhicle' element={<AddViechels></AddViechels>}></Route>
             </Route>
+           
           </Routes>
+          </ThemeProvider>
           <Footer></Footer>
           <ToastContainer/>
         </>

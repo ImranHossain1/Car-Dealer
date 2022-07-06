@@ -43,7 +43,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   ];
   
 const Users = () => {
-    const {data: users, isLoading, refetch} = useQuery('users', ()=>fetch('https://thawing-ridge-58827.herokuapp.com/users',{
+    const {data: users, isLoading, refetch} = useQuery('users', ()=>fetch('http://localhost:5000/users',{
         method: 'GET', 
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -55,7 +55,7 @@ const Users = () => {
     }
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 80 }} aria-label="customized table">
+            <Table aria-label="customized table">
                 <TableHead>
                     <TableRow>
                         <StyledTableCell >No</StyledTableCell>
@@ -67,15 +67,14 @@ const Users = () => {
                 <TableBody>
                     {users.map((user, index) => (
                         <StyledTableRow key={user._id}>
-                        
-                        <StyledTableCell component="th" scope="row">
-                            {index+1}
-                        </StyledTableCell>
-                        <StyledTableCell component="th" scope="row">
-                            {user.email}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">{user.role || "Make Admin"}</StyledTableCell>
-                        <StyledTableCell align="right">delete</StyledTableCell>
+                          <StyledTableCell component="th" scope="row">
+                              {index+1}
+                          </StyledTableCell>
+                          <StyledTableCell component="th" scope="row">
+                              {user.email}
+                          </StyledTableCell>
+                          <StyledTableCell align="right">{user.role || "Make Admin"}</StyledTableCell>
+                          <StyledTableCell align="right">delete</StyledTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>

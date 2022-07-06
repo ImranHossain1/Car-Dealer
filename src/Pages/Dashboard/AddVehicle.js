@@ -44,7 +44,7 @@ const AddViechels = () => {
                     img: img
                 }
                 //send data to db
-                fetch('https://thawing-ridge-58827.herokuapp.com/vehicle', {
+                fetch('http://localhost:5000/vehicle', {
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json',

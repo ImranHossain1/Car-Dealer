@@ -1,6 +1,6 @@
 import { Button, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import useStyles from '../../hooks/useStyles';
@@ -10,14 +10,32 @@ import ConditionCars from './ConditionCar';
 
 const PremiumCars = () => {
     const classes = useStyles();
-
+    const [pageCount, setPageCount] = useState(0);
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(4);
+    const [vehicles, setVehicles] = useState([]);
     const condition ='Premium';
-    const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles/${condition}`,{
+    /* const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`http://localhost:5000/vehicles/${condition}`,{
         method: 'GET'
     }).then(res=>res.json()));
     if(isLoading){
         <Loading></Loading>
-    }
+    } */
+    useEffect( () =>{
+        fetch(`http://localhost:5000/vehicles?page=${page}&size=${size}&condition=${condition}`)
+        .then(res => res.json())
+        .then(data => setVehicles(data));
+    }, [page, size, condition]);
+
+    useEffect( () =>{
+        fetch(`http://localhost:5000/vehicleCount?condition=${condition}`)
+        .then(res => res.json())
+        .then(data =>{
+            const count = data.count;
+            const pages = Math.ceil(count/4);
+            setPageCount(pages);
+        })
+    }, [condition])
     return (
         <Box>
             <Typography variant ="h3" sx={{my:5, color: '#1C2833', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>

@@ -7,9 +7,10 @@ const useToken = user =>{
         const displayName = user?.user?.displayName;
         const currentUser = {
             name: displayName,
-            email: email}
+            email: email
+        }
         if(email){
-            fetch(`https://thawing-ridge-58827.herokuapp.com/user/${email}`,{
+            fetch(`http://localhost:5000/user/${email}`,{
                 method: 'PUT',
                 headers:{
                     'content-type': 'application/json'

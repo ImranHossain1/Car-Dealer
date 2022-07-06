@@ -7,6 +7,7 @@ import audi from '../../assets/images/brands/audi.png'
 import mercedes from '../../assets/images/brands/Mercedes.png'
 import porsche from '../../assets/images/brands/porsche.png'
 import volvo from '../../assets/images/brands/Volvo.png'
+import { Link } from 'react-router-dom';
 const Brands = () => {
     return (
         <Box>            
@@ -19,22 +20,34 @@ const Brands = () => {
                 columns={{ xs: 12, sm: 12, md: 12 }} 
                 style={{alighItems:'center'}} >
                     <Grid item xs={6} sm={4} md={2} className='pics'>
-                        <img src={bmw} alt="" style={{width:'100%',}} />
+                        <Link to={`/vehicles/BMW`} style={{textDecoration:'none', color:'white'}}>
+                            <img src={bmw} alt="" style={{width:'100%',}} />
+                        </Link>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2} className='pics'>
-                        <img src={audi} alt="" style={{width:'100%'}} className='pics'/>
+                        <Link to={`/vehicles/Audi`} style={{textDecoration:'none', color:'white'}}>
+                            <img src={audi} alt="" style={{width:'100%'}} className='pics'/>
+                        </Link>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
+                        <Link to={`/vehicles/Mercedes-Benz`} style={{textDecoration:'none', color:'white'}}>
                         <img src={mercedes} alt="" style={{width:'100%'}} className='pics'/>
+                        </Link>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
+                        <Link to={`/vehicles/Ferrari`} style={{textDecoration:'none', color:'white'}}>
                         <img src={ferrari} alt="" style={{width:'100%'}} className='pics' />
+                        </Link>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
+                        <Link to={`/vehicles/Volvo`} style={{textDecoration:'none', color:'white'}}>
                         <img src={volvo} alt="" style={{width:'100%'}} className='pics'/>
+                        </Link>
                     </Grid>
                     <Grid item xs={6} sm={4} md={2}>
-                        <img src={porsche} alt="" style={{width:'100%'}} className='pics'/>
+                        <Link to={`/vehicles/Porsche`} style={{textDecoration:'none', color:'white'}}>
+                            <img src={porsche} alt="" style={{width:'100%'}} className='pics'/>
+                        </Link>
                     </Grid>
                 </Grid>
             </Container>
