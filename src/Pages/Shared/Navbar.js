@@ -111,13 +111,15 @@ const Navbar = () => {
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
+                    <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>
                     <Button
                       key={page}
                       onClick={handleCloseNavMenu}
                       sx={{ color: 'white', display: 'block' }}
                     >
-                      <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>{page}</Link>
+                     {page}
                     </Button>
+                    </Link>
                     </Typography>
                   </MenuItem>
                 ))}
@@ -144,25 +146,29 @@ const Navbar = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
+                <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                  <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>{page}</Link>
+                  {page}
                 </Button>
+                </Link>
               ))}
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
               { user? 
               <Box style={{display:'flex'}}>
+                <Link style={{textDecoration: 'none', color:'white'}} to='/dashboard'>
                 <Button
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >
-                    <Link style={{textDecoration: 'none', color:'white'}} to='/dashboard'>Dashboard</Link>
+                    Dashboard
                   </Button>
+                  </Link>
                 <Button
                   onClick={handleSignOut}
                   sx={{ my: 2, color: 'white', display: 'block' }}
@@ -171,12 +177,12 @@ const Navbar = () => {
               </Button>
               </Box>
               :
-                <Button
+              <Link style={{textDecoration: 'none', color:'white'}} to='/login'><Button
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >
-                    <Link style={{textDecoration: 'none', color:'white'}} to='/login'>Login</Link>
-                  </Button>
+                    Login
+                  </Button></Link>
                 }
             </Box>
           </Toolbar>

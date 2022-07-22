@@ -40,17 +40,18 @@ const Vehicles = () => {
         setPage (page-1)
         window.scroll(0,0);
     }
-    const companies = ['BMW', 'Audi', 'Mercedes-Benz', 'Ferrari', 'Volvo', 'Porsche'];
-    const categories= ['Sedan','Sport','Super Car','Luxury','Pickups','SUV','Truck','Van'];
-    const conditions = ['Exclusive', 'Premium', 'New', 'Used'];
+    const companies = ['Any','BMW', 'Audi', 'Mercedes-Benz', 'Ferrari', 'Volvo', 'Porsche'];
+    const categories= ['Any','Sedan','Sport','Super Car','Luxury','Pickups','SUV','Truck','Van'];
+    const conditions = ['Any','Exclusive', 'Premium', 'New', 'Used'];
     const handleConditionChange = (event) => {
-        setCondition(event.target.value)
+        event.target.value === 'Any'? setCondition(''):setCondition(event.target.value)
       };
     const handleCategoryChange = (event) => {
+        event.target.value === 'Any'? setCategory(''):
         setCategory(event.target.value)
       };
     const handleCompanyChange = (event) => {
-        
+        event.target.value === 'Any'? setCompany(''):
         setCompany(event.target.value)
       };
     useEffect( () =>{

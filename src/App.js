@@ -18,6 +18,8 @@ import Vehicles from './Pages/Shop/Vehicles';
 import Dashboard2 from './Pages/Dashboard/Dashboard2';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Gallery from './Pages/Shop/Gallery';
+import VehicleBooking from './Pages/Shop/VehicleBooking';
+import ConfirmVehicle from './Pages/Shop/ConfirmVehicle';
 
 const theme = createTheme({
   zIndex: {
@@ -35,6 +37,8 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/registration' element={<Register/>}/>
             <Route path='/vehicles' element={<Vehicles/>}/>
+            <Route path='/vehicle/:id' element={<VehicleBooking/>}/>
+            <Route path='/confirmVehicle/:id' element={<RequireAuth><ConfirmVehicle/></RequireAuth> }/>
             <Route path='/gallery' element={<Gallery/>}/>
             {/* <Route path='/dashboard2' element={<Dashboard2/>}/> */}
             <Route path='/vehicles/:cons' element={<Vehicles/>}/>
