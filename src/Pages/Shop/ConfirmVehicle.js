@@ -27,7 +27,8 @@ const ConfirmVehicle = () => {
         return <Loading></Loading>
     }
     //console.log(vehicle)
-    const {_id, company, catagory, cost, img} = vehicle
+    const {_id, company, catagory, cost, img, quantity} = vehicle
+    //console.log(quantity-1)
     const onSubmit = e => {
         //e.preventDefault();
        console.log(e)
@@ -39,7 +40,22 @@ const ConfirmVehicle = () => {
         phone: e.phone,
         address: e.address
     }
-    fetch('http://localhost:5000/bookedVehicle', {
+    const SubQuantity = {
+        quantity: quantity-1
+    }
+    fetch(`http://localhost:5000/vehicle/${id}`,{
+        method: 'PATCH',
+        headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        },
+        body: JSON.stringify(SubQuantity)
+    })
+    .then(res=>res.json())
+    .then(data=> {
+        console.log(data)
+        if(data.success){
+            fetch('http://localhost:5000/bookedVehicle', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -56,7 +72,12 @@ const ConfirmVehicle = () => {
                     toast.error(`Already have brought a ${catagory} from ${company}`)
                 }
                 reset()
-            })
+            }) 
+        }
+        else{
+            toast.error(`This car is Temporarily Unavailable from our stock`)
+        }
+    })
 
     };
     //console.log(user.displayName)

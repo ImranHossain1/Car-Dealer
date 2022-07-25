@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import { styled } from '@mui/material/styles';
@@ -10,6 +10,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import UserRow from './UserRow';
+import PurchasedCar from './PurchasedCar';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -24,15 +27,18 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
   
   
-const Users = () => {
-    const {data: users, isLoading, refetch} = useQuery('users', ()=>fetch('http://localhost:5000/users',{
+const PurchasedCars = () => {
+    const [deleteBooking, setDeleteBooking]= useState(null)
+    const [user, loading] = useAuthState(auth);
+    //console.log(user.email)
+    //const navigate = useNavigate();
+    const {data: bookedVehicles, isLoading, refetch} = useQuery(["bookedVehicles"], ()=>fetch(`http://localhost:5000/booking?user=${user.email}`,{
         method: 'GET', 
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
-    })
-    .then(res=> res.json()));
-    if(isLoading){
+    }).then(res=>res.json()));
+    if(loading || isLoading){
         return <Loading></Loading>
     }
     return (
@@ -41,14 +47,20 @@ const Users = () => {
                 <TableHead>
                     <TableRow>
                         <StyledTableCell >No</StyledTableCell>
-                        <StyledTableCell >Email</StyledTableCell>
-                        <StyledTableCell align="right">Role</StyledTableCell>
+                        <StyledTableCell >Vehicle Image</StyledTableCell>
+                        <StyledTableCell >Name</StyledTableCell>
+                        <StyledTableCell >Vehicle Company</StyledTableCell>
+                        <StyledTableCell >Vehicle Model</StyledTableCell>
+                        <StyledTableCell >Address</StyledTableCell>
+                        <StyledTableCell >Phone</StyledTableCell>
+                        <StyledTableCell >cost</StyledTableCell>
+                        <StyledTableCell align="center">Payment</StyledTableCell>
                         <StyledTableCell align="right">Actions</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {users.map((user, index) => (
-                        <UserRow key={index} user={user} index={index} refetch={refetch}/>
+                    {bookedVehicles.map((bookedVehicle, index) => (
+                        <PurchasedCar key={index} bookedVehicle={bookedVehicle} index={index} refetch={refetch}/>
                     ))}
                 </TableBody>
             </Table>
@@ -56,4 +68,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default PurchasedCars;

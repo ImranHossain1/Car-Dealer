@@ -10,16 +10,19 @@ import RequireAuth from './Pages/Login/RequireAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Register from './Pages/Login/Register';
 import Users from './Pages/Dashboard/Users';
-import Profile from './Pages/Dashboard/Profile';
 import AddViechels from './Pages/Dashboard/AddVehicle';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Vehicles from './Pages/Shop/Vehicles';
-import Dashboard2 from './Pages/Dashboard/Dashboard2';
+
 import { createTheme, ThemeProvider } from '@mui/material';
 import Gallery from './Pages/Shop/Gallery';
 import VehicleBooking from './Pages/Shop/VehicleBooking';
 import ConfirmVehicle from './Pages/Shop/ConfirmVehicle';
+import VehicleList from './Pages/Dashboard/VehicleList';
+import RequireAdmin from './Pages/Login/RequireAdmin';
+import PurchasedCars from './Pages/Dashboard/PurchasedCars';
+import Payment from './Pages/Dashboard/Payment';
 
 const theme = createTheme({
   zIndex: {
@@ -43,9 +46,11 @@ function App() {
             {/* <Route path='/dashboard2' element={<Dashboard2/>}/> */}
             <Route path='/vehicles/:cons' element={<Vehicles/>}/>
             <Route path='dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>
-              <Route index element={<Profile></Profile>}></Route>
-              <Route path='users' element={<Users></Users>}></Route>
-              <Route path='addvhicle' element={<AddViechels></AddViechels>}></Route>
+              <Route index element={<PurchasedCars></PurchasedCars>}></Route>
+              <Route path='payment/:id' element={<Payment></Payment>}></Route>
+              <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+              <Route path='addvhicle' element={<RequireAdmin><AddViechels></AddViechels></RequireAdmin>}></Route>
+              <Route path='vehicleList' element={<RequireAdmin><VehicleList></VehicleList></RequireAdmin>}></Route>
             </Route>
            
           </Routes>

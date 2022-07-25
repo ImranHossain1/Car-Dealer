@@ -1,94 +1,105 @@
-import { Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import useVehicles from '../../hooks/useVehicles';
+import Loading from '../Shared/Loading';
 import { useForm } from 'react-hook-form';
+import { Alert, Avatar, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from '@mui/material';
 import { toast } from 'react-toastify';
-
-const AddViechels = () => {
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+const VehicleEditModal = ({openEdit, handleVehicleEditClose , vehicle, refetch}) => {
+    //const [vehicles, isLoading, refetch] = useVehicles();
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [disabledButton, setDisabledButton]= useState(true);
-    const [condition, setCondition] = useState('Exclusive')
-    const [category, setCategory] = useState('Sedan')
-    const [company, setCompany] = useState('Audi')
+    const [vehicleCondition, setVehicleCondition] = useState(vehicle.condition)
+    const [category, setCategory] = useState(vehicle.catagory)
+    const [vehicleCompany, setVehicleCompany] = useState(vehicle.company)
+    const [vehicleCost, setVehicleCost] = useState(vehicle.cost)
+    const [vehicleQuantity, setVehicleQuantity] = useState(vehicle.quantity)
+    const [vehicleModel, setVehicleModel] = useState(vehicle.vehicleModel)
     const categories= ['Sedan','Sport','Super Car','Luxury','Pickups','SUV','Truck','Van'];
     const conditions = ['Exclusive', 'Premium', 'New', 'Used'];
     const companies = ['BMW', 'Audi', 'Mercedes-Benz', 'Ferrari', 'Volvo', 'Porsche'];
-    const imgStrorageKey = '634b89a1202c978f0b0218c7ddea37ca'
     const handleConditionChange = (event) => {
-        setCondition(event.target.value)
+        setVehicleCondition(event.target.value)
       };
     const handleCategoryChange = (event) => {
         setCategory(event.target.value)
       };
     const handleCompanyChange = (event) => {
-        setCompany(event.target.value)
+        setVehicleCompany(event.target.value)
       };
+
+    
+
     const onSubmit = data =>{
-        setDisabledButton(false)
-        const image = data.image[0];
-        const formData = new FormData();
-        formData.append('image',image);
-        const url = `https://api.imgbb.com/1/upload?key=${imgStrorageKey}`;
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        }).then(res=>res.json())
-        .then(result=>{
-            if(result.success){
-                const img = result.data.url;
-                const vehicle ={
-                    company: company,
-                    vehicleModel: data.vehicleModel,
-                    catagory: category,
-                    condition: condition,
-                    cost: data.cost,
-                    quantity: data.quantity,
-                    img: img
-                }
-                //send data to db
-                fetch('http://localhost:5000/vehicle', {
-                    method: 'POST',
+        //console.log(data, vehicleCompany, vehicleCondition, category)
+        const updatedVehicle= {
+            company : vehicleCompany,
+            category: category,
+            condition: vehicleCondition,
+            cost: data.cost,
+            vehicleModel: data.vehicleModel,
+            quantity: data.quantity
+        }
+        //console.log(vehicle)
+        fetch(`http://localhost:5000/vehicle/${vehicle._id}`, {
+                    method: 'PUT',
                     headers: {
                         'content-type' : 'application/json',
                         authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     },
-                    body: JSON.stringify(vehicle)
+                    body: JSON.stringify(updatedVehicle)
                 })
                 .then(res=>res.json())
                 .then(inserted=>{
-                   if(inserted.insertedId){
-                       toast.success('New Travel Destination Added Successfully');
+                     //console.log(inserted)
+                     if(inserted.result.modifiedCount === 1){
+                       toast.success('Vehicle Updated Successfully');
                        reset();
-                       setCondition('Exclusive');
-                       setCompany('BMW');
-                       setCategory('Sedan')
-                       setDisabledButton(true)
+                       refetch();
+                       handleVehicleEditClose();
+                       //navigate('/dashboard');
                    }
                    else{
-                       toast.error('Failed to add this Destination')
-                       setCondition('Exclusive');
-                       setCompany('BMW');
-                       setCategory('Sedan')
-                       setDisabledButton(true)
-                   }
+                       toast.error('Failed to Update Vehicle')
+                       
+                   } 
                 })
-            }
-            //console.log('imgBB', result)
-        })
-        //console.log(location)
     }
     return (
-        <Box sx={{mb: 12}}>
-            <Typography variant="h3" sx={{my:4, color: '#283747', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:25, lg:30}}>
-                Add a new Vehicle
-            </Typography>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <Box paddingX={{xs:3 , sm:4, md:5, lg:10}} style={{display: 'flex', flexDirection:'column', color: 'gray', alignItems:'center', opacity:'1.0' }}>
+        <Modal
+        open={openEdit}
+        onClose={handleVehicleEditClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+                <Box  style={{display: 'flex', flexDirection:'column', color: 'gray', alignItems:'center', opacity:'1.0' }}>
+                    <Avatar
+                        alt="Remy Sharp"
+                        src={vehicle.img}
+                        sx={{ width: 150, height: 150 }}
+                    />
                     <FormControl fullWidth sx={{my:2}}>
                         <InputLabel id="demo-simple-select-label3">Company</InputLabel>
                         <Select
                         labelId="demo-simple-select-label3"
                         id="demo-simple-select3"
-                        value={company}
+                        value={vehicleCompany}
                         label="Company"
                         onChange={handleCompanyChange}
                         >
@@ -103,6 +114,7 @@ const AddViechels = () => {
                         id="outlined-basic1" 
                         label="Model"
                         type= 'text'
+                        defaultValue={vehicleModel}
                         variant="outlined" 
                         {...register("vehicleModel", {
                             required:{
@@ -118,7 +130,7 @@ const AddViechels = () => {
                         <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={category}
+                        defaultValue={category}
                         label="Category"
                         onChange={handleCategoryChange}
                         >
@@ -133,7 +145,7 @@ const AddViechels = () => {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
 
-                        value={condition}
+                        defaultValue={vehicleCondition}
                         label="Condition"
                         onChange={handleConditionChange}
                         >
@@ -147,6 +159,7 @@ const AddViechels = () => {
                         color="success"
                         id="outlined-basic2" 
                         label="Price"
+                        defaultValue={vehicleCost}
                         type="number"
                         variant="outlined" 
                         {...register("cost", {
@@ -163,6 +176,7 @@ const AddViechels = () => {
                         color="success"
                         id="outlined-basic2" 
                         label="Quantity"
+                        defaultValue={vehicleQuantity}
                         type="number"
                         variant="outlined" 
                         {...register("quantity", {
@@ -174,30 +188,16 @@ const AddViechels = () => {
                     <Stack sx={{ width: '50%',  m: 1 }} >
                         {errors.quantity?.type === 'required'  && <Alert severity="warning" >{errors.quantity.message}</Alert>}                    
                     </Stack>
-                    <TextField 
-                        fullWidth
-                        color="success"
-                        id="outlined-basic2" 
-                        type="file"
-                        variant="outlined" 
-                        {...register("image", {
-                            required:{
-                                value: true,
-                                message: "image is Required"
-                            }
-                        })}/>
-                    <Stack sx={{ width: '50%',  m: 1 }} >
-                        {errors.image?.type === 'required'  && <Alert severity="warning" >{errors.image.message}</Alert>}                    
-                    </Stack>
                     {
                         disabledButton ?
-                        <Button variant='contained' type='submit' fullWidth >Add a new Vehicle</Button>:
-                        <Button disabled variant='contained' type='submit' fullWidth >Add a new Vehicle</Button>
+                        <Button variant='contained' type='submit' fullWidth >Edit Vehicle</Button>:
+                        <Button disabled variant='contained' type='submit' fullWidth >Edit Vehicle</Button>
                     }
                 </Box>
             </form>
         </Box>
+      </Modal>
     );
 };
 
-export default AddViechels;
+export default VehicleEditModal;

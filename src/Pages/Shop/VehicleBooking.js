@@ -48,16 +48,27 @@ const VehicleBooking = () => {
                                     <Typography variant="h6" sx={{mb:'10px'}}>
                                         Cost: <span style={{color:'red'}}>${vehicle.cost}</span>
                                     </Typography>
-                                    <Typography variant="body2" sx={{mb:'15px'}} color='green' style={{fontWeight:500}}>
-                                        In Stock
-                                    </Typography>
+                                    {
+                                        (vehicle.quantity > 0) ? 
+                                        <Typography variant="body2" sx={{mb:'15px'}} color='green' style={{fontWeight:500}}>
+                                            In Stock
+                                        </Typography>:
+                                        <Typography variant="body2" sx={{mb:'15px'}} color='red' style={{fontWeight:500}}>
+                                            Out of Stock
+                                        </Typography>
+                                    }
                                     <Typography variant="h6" sx={{mb:'15px'}}>
                                         Model: <span style={{color:'green', fontWeight:'700'}}> {vehicle.vehicleModel} </span>
                                     </Typography>
                                     <Divider></Divider> <br />
+                                    
+                                    {
+                                        (vehicle.quantity > 0) ?
                                     <Link to={`/confirmVehicle/${vehicle._id}`} className={classes.btn} style={{textDecoration:"none", padding:'10px 40px'}}>
                                         <Button color="inherit">Buy Now</Button>
-                                    </Link>
+                                    </Link>:
+                                        <Button disabled className={classes.btn} style={{textDecoration:"none", padding:'10px 40px'}}>Buy Now</Button>
+                                    }
                                 </CardContent>
                             </Card>        
                         </Grid>
@@ -66,6 +77,7 @@ const VehicleBooking = () => {
                     </Grid>
                     </Box>
                     <Divider sx={{mt:5}}></Divider>
+                    <Box sx={{px:2}}>
                     <Typography variant='h6' sx={{mt:2}}>
                         {vehicle.vehicleModel} {vehicle.catagory}
                     </Typography>
@@ -74,9 +86,13 @@ const VehicleBooking = () => {
                         world may cause delays or non-availability of certain components, features and models. 
                         Please see your dealer for additional information about your chosen {vehicle.company}. 
                     </Typography>
-                    <Link to={`/confirmVehicle/${vehicle._id}`} className={classes.btn} style={{textDecoration:"none", padding:'10px 40px'}}>
-                        <Button color="inherit">Order Now</Button>
-                    </Link>
+                    {
+                            (vehicle.quantity > 0) ?
+                        <Link to={`/confirmVehicle/${vehicle._id}`} className={classes.btn} style={{textDecoration:"none", padding:'10px 40px'}}>
+                            <Button color="inherit">Order Now</Button>
+                        </Link>:
+                            <Button disabled className={classes.btn} style={{textDecoration:"none", padding:'10px 40px'}}>Order Now</Button>
+                    }
                     <Divider sx={{mt:5, mb:2}}></Divider>
                     <Typography variant='h6'>
                         Base MsRP
@@ -136,6 +152,7 @@ const VehicleBooking = () => {
                     <Box sx={{display:'flex', justifyContent: 'space-between' ,fontSize: 20, mt:2}}>
                         <Typography variant='body'>Total Price (MSRP)</Typography>
                         <Typography variant='body' color='red' style={{fontWeight: 700}}>${vehicle.cost}</Typography>
+                    </Box>
                     </Box>
                 </Container>
             </Box>

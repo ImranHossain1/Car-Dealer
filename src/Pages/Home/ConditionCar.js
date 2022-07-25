@@ -1,10 +1,11 @@
 import { Button, Card, CardContent, CardMedia, Divider, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useStyles from '../../hooks/useStyles';
 
 const ConditionCars = ({vehicle}) => {
     const classes = useStyles();
-    const {company, vehicleModel, catagory, condition, cost, img}= vehicle;
+    const {company, vehicleModel, catagory, condition, cost, img, _id}= vehicle;
     return (
         <Grid item xs={12} sm={6} md={6} className='pics'>
             <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 2,backgroundColor: '#1d242e', opacity:0.95}} className='containers'>
@@ -31,7 +32,9 @@ const ConditionCars = ({vehicle}) => {
                     <Typography variant="body2">
                         Cost: {cost}
                     </Typography>
-    <Button variant="contained" className={classes.btn} sx={{mt:2, px:5}}>Select</Button>
+                    <Link to={`/vehicle/${_id}`} className={classes.btn} style={{textDecoration:"none", color: 'white', marginTop:'5%', paddingTop:'10px'}}>
+                        <Button color="inherit">Select</Button>
+                    </Link>
                 </CardContent>
             </Card>        
         </Grid>

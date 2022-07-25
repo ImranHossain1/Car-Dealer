@@ -15,20 +15,17 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { Button, Container, Menu, MenuItem } from '@mui/material';
-import { Link, Outlet, Route, Routes } from 'react-router-dom';
+import { Link, Outlet, useNavigate} from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Profile from './Profile';
-import Users from './Users';
-import Footer from '../Shared/Footer';
+import useAdmin from '../../hooks/useAdmin';
+
 const drawerWidth = 240;
 const pages = ['home', 'vehicles', 'gallery'];
 
@@ -77,7 +74,9 @@ export default function Dashboard() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [user] = useAuthState(auth);
-    
+  const [admin] = useAdmin(user);
+  const [userData, setUserData] = React.useState([])
+  const navigate = useNavigate();
   const handleSignOut = ()=>{
     signOut(auth)
   }
@@ -103,6 +102,30 @@ export default function Dashboard() {
       },
     },
   });
+
+  React.useEffect(()=>{
+    if(user){
+    fetch(`http://localhost:5000/user/${user.email}`,{
+        method: 'GET',
+        headers: {
+            'content-type' : 'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
+    .then(res=>{
+        //console.log('res',res);
+        if(res.status === 401 || res.status===403){
+            signOut(auth);
+            localStorage.removeItem('accessToken')
+            navigate('/');
+        }
+        return res.json()
+    })
+    .then(data=>{
+        setUserData(data);
+    })
+    } 
+  },[user])
 
   return (
     <div sx={{ display: 'flex' }} >
@@ -256,25 +279,37 @@ export default function Dashboard() {
                   <ListItemIcon>
                     <MailIcon />
                   </ListItemIcon>
-                    Profile
+                  My Purchased Car
                 </ListItemButton> 
               </Link>
-              <Link to='/dashboard/users' style={{textDecoration:"none", color: 'black'}} >
-                <ListItemButton sx={{p:2}}>
-                    <ListItemIcon>
-                      <MailIcon />
-                    </ListItemIcon>
-                          Users
-                </ListItemButton>
-              </Link>
-              <Link to='/dashboard/addvhicle' style={{textDecoration:"none", color: 'black'}}>
-                <ListItemButton sx={{p:2}}>
-                    <ListItemIcon>
-                      <MailIcon />
-                    </ListItemIcon>
-                            Add vehicle
-                </ListItemButton>
-              </Link>
+              { admin &&
+                <>
+                  <Link to='/dashboard/users' style={{textDecoration:"none", color: 'black'}} >
+                    <ListItemButton sx={{p:2}}>
+                        <ListItemIcon>
+                          <MailIcon />
+                        </ListItemIcon>
+                              Users
+                    </ListItemButton>
+                  </Link>
+                  <Link to='/dashboard/addvhicle' style={{textDecoration:"none", color: 'black'}}>
+                    <ListItemButton sx={{p:2}}>
+                        <ListItemIcon>
+                          <MailIcon />
+                        </ListItemIcon>
+                                Add vehicle
+                    </ListItemButton>
+                  </Link>
+                  <Link to='/dashboard/vehicleList' style={{textDecoration:"none", color: 'black'}}>
+                    <ListItemButton sx={{p:2}}>
+                        <ListItemIcon>
+                          <MailIcon />
+                        </ListItemIcon>
+                                Vehicle List
+                    </ListItemButton>
+                  </Link>
+                </>
+              }
             </ListItem>
         </List>
         <Divider />
