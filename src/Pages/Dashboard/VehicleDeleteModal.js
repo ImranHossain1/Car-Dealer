@@ -9,7 +9,6 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -44,15 +43,16 @@ const VehicleDeleteModal = ({openDelete, handleVehicleDeleteClose, vehicle, refe
         onClose={handleVehicleDeleteClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+
       >
-        <Box sx={style}>
+        <Box sx={style} width={{xs:380, sm:500, md:600}}>
           <Typography id="modal-modal-title" variant="h5" component="h2" style={{fontWeight:700, color:'#c0392b'}}>
             Are you sure that you want to Delete {vehicleModel}?
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Please enter confirm if you want to delete the car. Be careful, if you delete this car might cause some issue on the app.
           </Typography>
-          <Box style={{display:'flex', justifyContent:'end'}}>
+          <Box  display='flex' justifyContent={{xs:'center', md:'end'}} sx={{mt:2}}>
             <Button onClick={()=>handleDelete()} variant='contained' style={{marginRight: '15px', backgroundColor:'#a93226'}}>Confirm</Button>
             <Button variant='contained' onClick={handleCancel} style={{backgroundColor:'green'}}>Cancel</Button>
           </Box>

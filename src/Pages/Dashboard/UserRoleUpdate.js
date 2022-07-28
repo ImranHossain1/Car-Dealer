@@ -8,7 +8,6 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -50,11 +49,11 @@ const UserRoleUpdate = ({user,openRoleEdit, refetch,handleRoleEditClose}) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h5" component="h2" style={{fontWeight:700, color:'#c0392b'}}>
-            Are you sure, you want to make {name} Admin?
+        <Box sx={style}  width={{xs:380, sm:500, md:600}}>
+          <Typography id="modal-modal-title" variant="h6" component="h2" style={{fontWeight:700, textAlign:'center'}}>
+            Are you sure, you want to make <span style={{color:'#c0392b'}}>{name}</span> Admin?
           </Typography>
-          <Box style={{display:'flex', justifyContent:'end'}}>
+          <Box display='flex' justifyContent='center' sx={{mt:2}}>
             <Button onClick={makeAdmin} variant='contained' style={{marginRight: '15px', backgroundColor:'#a93226'}}>Confirm</Button>
             <Button variant='contained' onClick={handleCancel} style={{backgroundColor:'green'}}>Cancel</Button>
           </Box>
