@@ -112,10 +112,10 @@ const PurchasedCar = ({bookedVehicle, index, refetch}) => {
               </StyledTableCell>
               <StyledTableCell component="th" scope="row" style={{textAlign:'center'}}>
                     {(cost && !paid) && <Link style={{textDecoration:'none'}} to={`/dashboard/payment/${_id}`}><Button variant="contained">Pay Now</Button></Link>}
-                    {(cost && paid) && <div >
+                    {(cost && paid) && <>
                             <Typography>Paid</Typography>
                             <Typography variant='body2'>Transaction id: <span>{transactionId}</span></Typography>
-                    </div>}
+                    </>}
               </StyledTableCell>
               <StyledTableCell align="right">
                 {

@@ -60,8 +60,8 @@ const CarCarousel = () => {
         }}
         dotsClass="slick-dots custom-indicator2"
       >
-        {data.map((item) => (
-          <Box height={{xs:'25vh', sm:'40vh', lg:'75vh'}}>
+        {data.map((item, index) => (
+          <Box key={index} height={{xs:'25vh', sm:'40vh', lg:'75vh'}}>
             <img src={item} alt="" style={{ width: "100%", height:'100%'}} />
           </Box>
         ))}

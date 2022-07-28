@@ -47,7 +47,7 @@ const Users = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {users.map((user, index) => (
+                    {users?.map((user, index) => (
                         <UserRow key={index} user={user} index={index} refetch={refetch}/>
                     ))}
                 </TableBody>
