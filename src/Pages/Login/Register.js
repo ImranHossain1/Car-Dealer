@@ -42,7 +42,7 @@ const Register = () => {
         return <Loading></Loading>
     }
     if(error || gError|| updateError){
-        signInErrorMessage = <p className='text-red-500'><small>{error?.message || gError?.message || updateError?.message}</small></p>
+        signInErrorMessage = <Typography color='#a93226' sx={{mb:1}}><small>{error?.message || gError?.message}</small></Typography>
     }
 
     if(token){

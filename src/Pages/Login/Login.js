@@ -49,7 +49,7 @@ const Login = () => {
         return <Loading></Loading>
     }
     if(error || gError){
-        signInErrorMessage = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+        signInErrorMessage = <Typography color='#a93226' sx={{mb:1}}><small>{error?.message || gError?.message}</small></Typography>
     }
 
     const onSubmit = data => {
@@ -116,6 +116,7 @@ const Login = () => {
                                     {errors.password?.type === 'required'  && <Alert severity="warning" >{errors.password.message}</Alert>}
                                     {errors.password?.type === 'minLength' && <Alert severity="warning"> {errors.password.message}</Alert>}
                                 </Stack>
+                                {signInErrorMessage}
                                 <Button variant='contained' type='submit' fullWidth className={classes.btn}>Login</Button>
                                 <Typography sx={{my:2}} >
                                     <Link to='/registration' className={classes.link} >Don't have any account? Please Register</Link>
