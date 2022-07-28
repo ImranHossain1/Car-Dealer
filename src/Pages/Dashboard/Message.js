@@ -19,7 +19,7 @@ const bannerBg = {
 
 const Message = () => {
     const {id} = useParams();
-    const url = `http://localhost:5000/notification/${id}`;
+    const url = `https://thawing-ridge-58827.herokuapp.com/notification/${id}`;
     
     const {data: notification, isLoading} = useQuery(['notification', id], ()=>fetch(url,{
          method: 'GET',

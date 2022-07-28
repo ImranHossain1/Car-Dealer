@@ -14,7 +14,7 @@ const CheckoutForm = ({bookedVehicle}) => {
     const [clientSecret, setClientSecret] = useState('');
     
     useEffect(()=>{
-        fetch('http://localhost:5000/create-payment-intent',{
+        fetch('https://thawing-ridge-58827.herokuapp.com/create-payment-intent',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -76,7 +76,7 @@ const CheckoutForm = ({bookedVehicle}) => {
                   bookedVehicle: _id,
                   transactionId: paymentIntent.id
               }
-              fetch(`http://localhost:5000/booking/${_id}`,{
+              fetch(`https://thawing-ridge-58827.herokuapp.com/booking/${_id}`,{
                   method: 'PATCH',
                   headers: {
                     'content-type': 'application/json',

@@ -33,7 +33,7 @@ const CoontactUs = () => {
           unread: true
         }
         console.log(mail)
-        fetch('http://localhost:5000/notification',{
+        fetch('https://thawing-ridge-58827.herokuapp.com/notification',{
           method: 'POST',
           headers: {
               'content-type' : 'application/json'

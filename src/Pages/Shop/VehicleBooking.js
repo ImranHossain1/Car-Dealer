@@ -14,8 +14,8 @@ const VehicleBooking = () => {
     const {id} = useParams();
     let rating = 0;
     let count = 0;
-    const url = `http://localhost:5000/vehicle/${id}`
-    const url2 = `http://localhost:5000/review/${id}`
+    const url = `https://thawing-ridge-58827.herokuapp.com/vehicle/${id}`
+    const url2 = `https://thawing-ridge-58827.herokuapp.com/review/${id}`
     const {data:vehicle, isLoading, refetch} = useQuery(['vehicle', id], ()=>fetch(url,{
         method: 'GET'
     }).then(res=>res.json()));

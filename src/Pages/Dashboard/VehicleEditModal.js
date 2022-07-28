@@ -55,7 +55,7 @@ const VehicleEditModal = ({openEdit, handleVehicleEditClose , vehicle, refetch})
             quantity: data.quantity
         }
         //console.log(vehicle)
-        fetch(`http://localhost:5000/vehicle/${vehicle._id}`, {
+        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicle/${vehicle._id}`, {
                     method: 'PUT',
                     headers: {
                         'content-type' : 'application/json',

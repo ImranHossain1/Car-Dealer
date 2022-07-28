@@ -19,13 +19,13 @@ const ConditionalCars = () => {
         window.scroll(0,0);
     }
     useEffect( () =>{
-        fetch(`http://localhost:5000/vehicles?page=${page}&size=${size}&condition=${condition}`)
+        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles?page=${page}&size=${size}&condition=${condition}`)
         .then(res => res.json())
         .then(data => setVehicles(data));
     }, [page, size]);
 
     useEffect( () =>{
-        fetch(`http://localhost:5000/vehicleCount/${condition}`)
+        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicleCount/${condition}`)
         .then(res => res.json())
         .then(data =>{
             //console.log(data.count)

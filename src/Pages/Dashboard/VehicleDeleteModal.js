@@ -18,7 +18,7 @@ const style = {
 const VehicleDeleteModal = ({openDelete, handleVehicleDeleteClose, vehicle, refetch}) => {
     const {vehicleModel, _id} = vehicle;
     const handleDelete = ()=>{
-        fetch(`http://localhost:5000/vehicle/${_id}`,{
+        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicle/${_id}`,{
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

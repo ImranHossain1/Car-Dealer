@@ -34,7 +34,7 @@ const Notifications = () => {
         unread : false
     }
     const handleNotification = id =>{
-        fetch(`http://localhost:5000/notification/${id}`,{
+        fetch(`https://thawing-ridge-58827.herokuapp.com/notification/${id}`,{
                   method: 'PATCH',
                   headers: {
                     'content-type': 'application/json',

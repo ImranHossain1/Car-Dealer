@@ -62,7 +62,7 @@ const PurchasedCar = ({bookedVehicle, index, refetch}) => {
     const handlePurchasedCarDeleteOpen = () => setOpenDelete(true);
     const handlePurchasedCarDeleteClose = () => setOpenDelete(false);
     useEffect(()=>{
-            fetch(`http://localhost:5000/review?carId=${carId}&userEmail=${userEmail}`)
+            fetch(`https://thawing-ridge-58827.herokuapp.com/review?carId=${carId}&userEmail=${userEmail}`)
             .then(res=>res.json())
             .then(data=>{
                 if(data){
@@ -74,7 +74,7 @@ const PurchasedCar = ({bookedVehicle, index, refetch}) => {
             })
     },[carId, userEmail, reviewUpdate])    
 
-    const url = `http://localhost:5000/vehicle/${carId}`
+    const url = `https://thawing-ridge-58827.herokuapp.com/vehicle/${carId}`
     const {data:vehicle, isLoading} = useQuery(['vehicle', carId], ()=>fetch(url,{
         method: 'GET'
     }).then(res=>res.json()));

@@ -55,13 +55,13 @@ const Vehicles = () => {
         setCompany(event.target.value)
       };
     useEffect( () =>{
-        fetch(`http://localhost:5000/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`)
+        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`)
         .then(res => res.json())
         .then(data => setVehicles(data));
     }, [page, size, condition, company, category]);
 
     useEffect( () =>{
-        fetch(`http://localhost:5000/vehicleCount?condition=${condition}&company=${company}&category=${category}`)
+        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicleCount?condition=${condition}&company=${company}&category=${category}`)
         .then(res => res.json())
         .then(data =>{
             const count = data.count;

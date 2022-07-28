@@ -18,7 +18,7 @@ const ConfirmVehicle = () => {
     const [user, loading, error] = useAuthState(auth);
     const classes = useStyles();
     const {id} = useParams();
-    const url = `http://localhost:5000/vehicle/${id}`
+    const url = `https://thawing-ridge-58827.herokuapp.com/vehicle/${id}`
     const {data:vehicle, isLoading, refetch} = useQuery(['vehicle', id], ()=>fetch(url,{
         method: 'GET'
     }).then(res=>res.json()));
@@ -41,7 +41,7 @@ const ConfirmVehicle = () => {
     const SubQuantity = {
         quantity: quantity-1
     }
-    fetch(`http://localhost:5000/vehicle/${id}`,{
+    fetch(`https://thawing-ridge-58827.herokuapp.com/vehicle/${id}`,{
         method: 'PATCH',
         headers: {
         'content-type': 'application/json',
@@ -52,7 +52,7 @@ const ConfirmVehicle = () => {
     .then(res=>res.json())
     .then(data=> {
         if(data.success){
-            fetch('http://localhost:5000/bookedVehicle', {
+            fetch('https://thawing-ridge-58827.herokuapp.com/bookedVehicle', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
