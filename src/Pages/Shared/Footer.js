@@ -19,7 +19,8 @@ const Footer = () => {
                                     Car Dealer
                                 </Typography>
                                 <Typography style={{color: 'gray'}}>
-                                    Copyright © 2022 MD IMRAN HOSSAIN
+                                    Copyright © 2022 
+                                    <br/> MD IMRAN HOSSAIN
                                 </Typography>
                             </Box>
                         </Grid>
