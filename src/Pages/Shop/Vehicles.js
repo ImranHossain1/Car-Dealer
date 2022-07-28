@@ -28,7 +28,7 @@ const Vehicles = () => {
         com = ''
     }
 
-    console.log(cond, cat, com) 
+    //console.log(cond, cat, com) 
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(8);

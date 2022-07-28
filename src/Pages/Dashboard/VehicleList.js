@@ -9,11 +9,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Avatar, Button } from '@mui/material';
-import EditLocationAltSharpIcon from '@mui/icons-material/EditLocationAltSharp';
-import DeleteIcon from '@mui/icons-material/Delete';
-import VehicleEditModal from './VehicleEditModal';
-import VehicleDeleteModal from './VehicleDeleteModal';
 import useVehicles from '../../hooks/useVehicles';
 import VehicleListRow from './VehicleListRow';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -26,25 +21,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
   
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  }));
  
 const VehicleList = () => {
-    const [editVehicle, setEditVehicle] = useState(null)
-    const [openEdit, setOpenEdit] = useState(false);
-    const [openDelete, setOpenDelete] = useState(false);
-    const handleVehicleEditOpen = () => setOpenEdit(true);
-    const handleVihicleEditClose = () => setOpenEdit(false);
-    const handleVehicleDeleteOpen = () => setOpenDelete(true);
-    const handleVihicleDeleteClose = () => setOpenDelete(false);
-
     const [vehicles, isLoading, refetch] = useVehicles()
     if(isLoading){
         return <Loading></Loading>

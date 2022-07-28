@@ -15,38 +15,38 @@ const style = {
     boxShadow: 24,
     p: 3,
   };
-const PurchaseCarDeleteModal = ({openDelete, handlePurchasedCarDeleteClose, bookedVehicle, refetch}) => {
-    const {userName, address, phone,cost, _id} = bookedVehicle;
+const NotificationDeleteModal = ({openDelete, handleNotificationDeleteClose, message, refetch}) => {
+    const {subject, _id} = message;
     const handleDelete = ()=>{
-        fetch(`http://localhost:5000/bookedVehicle/${_id}`,{
-            method: 'DELETE',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-        .then(res=>res.json())
-        .then(data=> {
-            if(data.deletedCount){
-                toast.success(`Order: ${_id} is deleted successfully`)
-                handlePurchasedCarDeleteClose(false)
-                refetch();
-            }
-        })
+        fetch(`http://localhost:5000/notification/${_id}`,{
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+            .then(res=>res.json())
+            .then(data=> {
+                console.log(data);
+                if(data.deletedCount){
+                    toast.success(`Notification: ${subject} is deleted`)
+                    refetch();
+                }
+            })
         //console.log(_id)
     }
     const handleCancel= e=>{
-        handlePurchasedCarDeleteClose(false)
+        handleNotificationDeleteClose(false)
     }
     return (
         <Modal
         open={openDelete}
-        onClose={handlePurchasedCarDeleteClose}
+        onClose={handleNotificationDeleteClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h5" component="h2" style={{fontWeight:700, color:'#c0392b'}}>
-            Are you sure that you want to Delete {_id}?
+            Are you sure that you want to Delete {subject}?
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Please enter confirm if you want to delete the car. Be careful, if you delete this car might cause some issue on the app.
@@ -60,4 +60,4 @@ const PurchaseCarDeleteModal = ({openDelete, handlePurchasedCarDeleteClose, book
     );
 };
 
-export default PurchaseCarDeleteModal;
+export default NotificationDeleteModal;

@@ -1,6 +1,5 @@
-import { Button, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, Divider, Grid, Rating, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import g01 from '../../assets/images/g01.jpg'
 import React from 'react';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
@@ -13,15 +12,28 @@ import useStyles from '../../hooks/useStyles';
 const VehicleBooking = () => {
     const classes = useStyles();
     const {id} = useParams();
+    let rating = 0;
+    let count = 0;
     const url = `http://localhost:5000/vehicle/${id}`
+    const url2 = `http://localhost:5000/review/${id}`
     const {data:vehicle, isLoading, refetch} = useQuery(['vehicle', id], ()=>fetch(url,{
         method: 'GET'
     }).then(res=>res.json()));
-    if(isLoading){
+    const {data:reviews, isReviewLoading} = useQuery(['reviews', id], ()=>fetch(url2,{
+        method: 'GET'
+    }).then(res=>res.json()));
+
+    if(isLoading || isReviewLoading){
         return <Loading></Loading>
     }
-    console.log(vehicle)
-    
+    //console.log(review)
+    if(reviews){
+        for(const review of reviews){
+            count++
+            rating = rating + review.rating
+        }
+    }
+    const rate =(Math.ceil(rating/count))
     return (
         <>
             <Navbar></Navbar>
@@ -57,6 +69,9 @@ const VehicleBooking = () => {
                                             Out of Stock
                                         </Typography>
                                     }
+                                    {
+                                        (rate>0) && <Rating name="read-only" value={rate} readOnly />
+                                    }
                                     <Typography variant="h6" sx={{mb:'15px'}}>
                                         Model: <span style={{color:'green', fontWeight:'700'}}> {vehicle.vehicleModel} </span>
                                     </Typography>
@@ -77,6 +92,31 @@ const VehicleBooking = () => {
                     </Grid>
                     </Box>
                     <Divider sx={{mt:5}}></Divider>
+                    { (rate>0) && <>
+                        <Box>
+                        <Typography variant='h4' sx={{mb:5}} style={{textAlign:'center'}}>Ratings</Typography>
+                        <Grid container  spacing={{ xs: 3, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} >
+                        {
+                            reviews?.map(review=><Grid key={review._id} item xs={12} sm={6} md={3} className='pics'>
+                                    <Card >
+                                        <CardContent style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
+                                            <Typography variant="body2" style={{fontSize:18}} component="div" >
+                                             Rated By: {review.reviewerName}
+                                            </Typography>
+                                            
+                                            <Rating name="read-only" sx={{my:2}} value={review.rating} readOnly />
+                                            <Typography variant="body2">
+                                                Comment: {review.comment}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>        
+                                </Grid>
+                            )
+                        }
+                        </Grid>
+                    </Box>
+                    <Divider sx={{mt:5}}></Divider>
+                    </>}
                     <Box sx={{px:2}}>
                     <Typography variant='h6' sx={{mt:2}}>
                         {vehicle.vehicleModel} {vehicle.catagory}

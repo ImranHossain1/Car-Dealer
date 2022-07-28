@@ -1,6 +1,6 @@
 import React from 'react';
-import bannerCar from '../../assets/images/carImages/bannerCar.jpg';
-import car1 from '../../assets/images/carImages/car1.jpg' ;
+import bannerCar from '../../assets/images/CarouselImage/bannerCar.jpg';
+import car1 from '../../assets/images/CarouselImage/car1.jpg' ;
 import Grid from '@mui/material/Grid';
 import {Typography , Button , Container} from '@mui/material';
 import Box from '@mui/material/Box';

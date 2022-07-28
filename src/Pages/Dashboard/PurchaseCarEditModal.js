@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import useVehicles from '../../hooks/useVehicles';
-import Loading from '../Shared/Loading';
 import { useForm } from 'react-hook-form';
 import { Alert, Avatar, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from '@mui/material';
 import { toast } from 'react-toastify';
@@ -27,7 +24,7 @@ const PurchaseCardEditModal = ({openEdit, handlePurchasedCarEditClose, bookedVeh
     
 
     const onSubmit = data =>{
-        console.log(data)
+        setDisabledButton(false)
         const updatedOrder= {
            address: data.address,
            phone: data.phone
@@ -53,8 +50,8 @@ const PurchaseCardEditModal = ({openEdit, handlePurchasedCarEditClose, bookedVeh
                    }
                    else{
                        toast.error('Failed to Update Order Detail')
-                       
                    } 
+                   setDisabledButton(true)
                 })
         
     }

@@ -38,6 +38,7 @@ const PurchasedCars = () => {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res=>res.json()));
+
     if(loading || isLoading){
         return <Loading></Loading>
     }
@@ -59,7 +60,7 @@ const PurchasedCars = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {bookedVehicles.map((bookedVehicle, index) => (
+                    {bookedVehicles?.map((bookedVehicle, index) => (
                         <PurchasedCar key={index} bookedVehicle={bookedVehicle} index={index} refetch={refetch}/>
                     ))}
                 </TableBody>

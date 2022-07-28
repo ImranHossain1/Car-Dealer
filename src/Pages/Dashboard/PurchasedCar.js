@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { Avatar, Button, Tooltip, Typography } from '@mui/material';
+import { Avatar, Button, Rating, Tooltip, Typography } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -13,7 +13,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import PurchaseCarEditModal from './PurchaseCarEditModal';
 import PurchaseCarDeleteModal from './PurchaseCarDeleteModal';
-
+import AddReview from './AddReview';
+import { useEffect } from 'react';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -33,18 +36,49 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       border: 0,
     },
   }));
+
+  
+const StyledRating = styled(Rating)({
+    '& .MuiRating-iconFilled': {
+      color: '#ff6d75',
+    },
+    '& .MuiRating-iconHover': {
+      color: '#ff3d47',
+    },
+  });
 const PurchasedCar = ({bookedVehicle, index, refetch}) => {
     const {userName, userEmail, cost, _id, address,carId, phone, paid, transactionId} = bookedVehicle;
     const [openEdit, setOpenEdit] = useState(false);
     const [openDelete, setOpenDelete] = useState(false);
+    const [openReview, setOpenReview] = useState(false);
+    const [review, setReview]= useState([])
+    const [reviewUpdate, setReviewUpdate]= useState(0)
     const handlePurchasedCarEditOpen = () => setOpenEdit(true);
     const handlePurchasedCarEditClose = () => setOpenEdit(false);
+    
+    const handleReviewOpen = () => setOpenReview(true);
+    const handleReviewClose = () => setOpenReview(false);
+    
     const handlePurchasedCarDeleteOpen = () => setOpenDelete(true);
     const handlePurchasedCarDeleteClose = () => setOpenDelete(false);
+    useEffect(()=>{
+            fetch(`http://localhost:5000/review?carId=${carId}&userEmail=${userEmail}`)
+            .then(res=>res.json())
+            .then(data=>{
+                if(data){
+                    setReview(data)
+                }
+                else{
+                    setReview([])
+                }
+            })
+    },[carId, userEmail, reviewUpdate])    
+
     const url = `http://localhost:5000/vehicle/${carId}`
     const {data:vehicle, isLoading} = useQuery(['vehicle', carId], ()=>fetch(url,{
         method: 'GET'
     }).then(res=>res.json()));
+
     if(isLoading){
         return <Loading></Loading>
     }
@@ -85,10 +119,17 @@ const PurchasedCar = ({bookedVehicle, index, refetch}) => {
               </StyledTableCell>
               <StyledTableCell align="right">
                 {
-                    paid ? <Button variant='contained' style={{backgroundColor:'#d4ac0d'}}>Review</Button>
+                    paid ? review?.rating ? <StyledRating
+                    name="customized-color"
+                    defaultValue={review.rating}
+                    readOnly
+                    precision={0.5}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                  />: <Button onClick={handleReviewOpen} variant='contained' style={{backgroundColor:'#d4ac0d'}}>Review</Button>
                     :
                     <>
-                        <Tooltip title="Edit">
+                            <Tooltip title="Edit">
                             <EditLocationAltSharpIcon onClick={handlePurchasedCarEditOpen} sx={{color:'green'}} fontSize="large"></EditLocationAltSharpIcon> 
                            </Tooltip>
                            <Tooltip title="Delete">
@@ -98,7 +139,14 @@ const PurchasedCar = ({bookedVehicle, index, refetch}) => {
                 }
               </StyledTableCell>
             </StyledTableRow>
-
+            <AddReview
+                setReviewUpdate= {setReviewUpdate}
+                bookedVehicle={bookedVehicle}
+                vehicle={vehicle}
+                openReview= {openReview}
+                refetch={refetch}
+                handleReviewClose={handleReviewClose}
+            ></AddReview>
              <PurchaseCarEditModal
                 bookedVehicle={bookedVehicle}
                 vehicle={vehicle}

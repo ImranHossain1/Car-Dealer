@@ -1,6 +1,5 @@
 import { Alert, Button, Card, CardContent, Divider, FormControl, Grid, InputLabel, Stack, TextField, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import g01 from '../../assets/images/g01.jpg'
 import React from 'react';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
@@ -31,7 +30,6 @@ const ConfirmVehicle = () => {
     //console.log(quantity-1)
     const onSubmit = e => {
         //e.preventDefault();
-       console.log(e)
        const confirmBooking = {
         carId: _id,
         cost: cost,
@@ -53,7 +51,6 @@ const ConfirmVehicle = () => {
     })
     .then(res=>res.json())
     .then(data=> {
-        console.log(data)
         if(data.success){
             fetch('http://localhost:5000/bookedVehicle', {
             method: 'POST',
@@ -145,21 +142,26 @@ const ConfirmVehicle = () => {
                                         color="success"
                                         id="outlined-basic2" 
                                         label="Phone Number"
-                                        type="text"
+                                        type="number"
                                         variant="outlined" 
                                         {...register("phone", {
                                             required:{
                                                 value: true,
-                                                message: "Phone Number is Required"
+                                                message: "Phone number is Required"
                                             },
                                             minLength: {
-                                                value: 6,
-                                                message: 'Must be 10 character or longer' // JS only: <p>error message</p> TS only support string
+                                                value: 11,
+                                                message: 'Must be 11 character or longer' // JS only: <p>error message</p> TS only support string
+                                            },
+                                            maxLength: {
+                                                value: 14,
+                                                message: 'Invalid Phone Number' // JS only: <p>error message</p> TS only support string
                                             }
                                         })}/>
                                     <Stack sx={{ width: '50%',  m: 1 }} >
                                         {errors.phone?.type === 'required'  && <Alert severity="warning" >{errors.phone.message}</Alert>}
                                         {errors.phone?.type === 'minLength' && <Alert severity="warning"> {errors.phone.message}</Alert>}
+                                        {errors.phone?.type === 'maxLength' && <Alert severity="warning"> {errors.phone.message}</Alert>}
                                     </Stack>
                                     <TextField
                                     disabled

@@ -41,9 +41,9 @@ const Users = () => {
                 <TableHead>
                     <TableRow>
                         <StyledTableCell >No</StyledTableCell>
-                        <StyledTableCell >Email</StyledTableCell>
-                        <StyledTableCell align="right">Role</StyledTableCell>
-                        <StyledTableCell align="right">Actions</StyledTableCell>
+                        <StyledTableCell align="center">Name</StyledTableCell>
+                        <StyledTableCell align="center">Email</StyledTableCell>
+                        <StyledTableCell align="center">Role</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

@@ -8,7 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import loginBg from '../../assets/images/carImages/carbg.jpg'
+import paymentBg from '../../assets/images/CarouselImage/carbg.jpg'
 import { Divider, Paper } from '@mui/material';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
@@ -17,7 +17,7 @@ const bannerBg = {
     flexGrow: 1,
     height: '100vh',
     textAlign: 'center',
-    backgroundImage: `url(${loginBg})`,
+    backgroundImage: `url(${paymentBg})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
     backgroundSize: "cover",

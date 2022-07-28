@@ -19,13 +19,12 @@ import useStyles from '../../hooks/useStyles';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
-const pages = ['home', 'vehicles', 'gallery'];
+const pages = ['home', 'vehicles'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
   const classes = useStyles();
   const [user] = useAuthState(auth);
-    
   const handleSignOut = ()=>{
     signOut(auth)
   }
@@ -113,7 +112,6 @@ const Navbar = () => {
                     <Typography textAlign="center">
                     <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>
                     <Button
-                      key={page}
                       onClick={handleCloseNavMenu}
                       sx={{ color: 'white', display: 'block' }}
                     >
@@ -146,7 +144,7 @@ const Navbar = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>
+                <Link key={page} style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}

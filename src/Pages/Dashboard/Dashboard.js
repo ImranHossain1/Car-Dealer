@@ -16,6 +16,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MailIcon from '@mui/icons-material/Mail';
+import PeopleIcon from '@mui/icons-material/People';
+import NoCrashIcon from '@mui/icons-material/NoCrash';
+import LocalCarWashIcon from '@mui/icons-material/LocalCarWash';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { Button, Container, Menu, MenuItem } from '@mui/material';
 import { Link, Outlet, useNavigate} from 'react-router-dom';
@@ -27,7 +31,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import useAdmin from '../../hooks/useAdmin';
 
 const drawerWidth = 240;
-const pages = ['home', 'vehicles', 'gallery'];
+const pages = ['home', 'vehicles'];
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -223,9 +227,9 @@ export default function Dashboard() {
                 </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     {pages.map((page) => (
-                    <Link style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>
+                    <Link key={page} style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>
                     <Button
-                        key={page}
+                        
                         onClick={handleCloseNavMenu}
                         sx={{ my: 2, color: 'white', display: 'block' }}
                     >
@@ -277,40 +281,56 @@ export default function Dashboard() {
               <Link to='/dashboard' style={{textDecoration:"none", color: 'black'}} >
                 <ListItemButton  sx={{p:2}}>
                   <ListItemIcon>
-                    <MailIcon />
+                    <AddShoppingCartIcon />
                   </ListItemIcon>
                   My Purchased Car
                 </ListItemButton> 
               </Link>
+              </ListItem>
               { admin &&
                 <>
+                <ListItem  style={{display:'block'}} disablePadding>
                   <Link to='/dashboard/users' style={{textDecoration:"none", color: 'black'}} >
                     <ListItemButton sx={{p:2}}>
                         <ListItemIcon>
-                          <MailIcon />
+                          <PeopleIcon />
                         </ListItemIcon>
                               Users
                     </ListItemButton>
                   </Link>
+                  </ListItem>
+                  <ListItem  style={{display:'block'}} disablePadding>
                   <Link to='/dashboard/addvhicle' style={{textDecoration:"none", color: 'black'}}>
                     <ListItemButton sx={{p:2}}>
                         <ListItemIcon>
-                          <MailIcon />
+                          <NoCrashIcon />
                         </ListItemIcon>
                                 Add vehicle
                     </ListItemButton>
                   </Link>
-                  <Link to='/dashboard/vehicleList' style={{textDecoration:"none", color: 'black'}}>
-                    <ListItemButton sx={{p:2}}>
-                        <ListItemIcon>
-                          <MailIcon />
-                        </ListItemIcon>
-                                Vehicle List
-                    </ListItemButton>
-                  </Link>
+                  </ListItem>
+                  <ListItem  style={{display:'block'}} disablePadding>
+                    <Link to='/dashboard/vehicleList' style={{textDecoration:"none", color: 'black'}}>
+                      <ListItemButton sx={{p:2}}>
+                          <ListItemIcon>
+                            <LocalCarWashIcon />
+                          </ListItemIcon>
+                                  Vehicle List
+                      </ListItemButton>
+                    </Link>
+                    </ListItem>
+                  <ListItem  style={{display:'block'}} disablePadding>
+                    <Link to='/dashboard/notifications' style={{textDecoration:"none", color: 'black'}}>
+                      <ListItemButton sx={{p:2}}>
+                          <ListItemIcon>
+                            <MailIcon />
+                          </ListItemIcon>
+                                  Notifications
+                      </ListItemButton>
+                    </Link>
+                    </ListItem>
                 </>
               }
-            </ListItem>
         </List>
         <Divider />
         <List>

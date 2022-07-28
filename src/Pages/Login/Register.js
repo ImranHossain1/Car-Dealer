@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useStyles from '../../hooks/useStyles';
-import loginBg from '../../assets/images/carImages/loginbg.jpg'
+import loginBg from '../../assets/images/CarouselImage/loginbg.jpg'
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';

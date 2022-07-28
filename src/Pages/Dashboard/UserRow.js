@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { Button, Typography } from '@mui/material';
-import { toast } from 'react-toastify';
+import UserRoleUpdate from './UserRoleUpdate';
+import auth from '../../firebase.init';
+import useUser from '../../hooks/useUser';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -26,46 +28,35 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
 const UserRow = ({user, index, refetch}) => {
-    const {_id, email, role, name} = user
-    const makeAdmin =()=>{
-        console.log(email);
-        fetch(`http://localhost:5000/user/admin/${email}`,{
-            method: 'PUT',
-            headers:{
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })        
-        .then(res=>{
-            if(res.status === 403){
-                toast.error('Failed to make an Admin');
-            }
-            return res.json();
-        })
-        .then(data=>{
-            if(data.result.modifiedCount > 0){
-                refetch();
-                toast.success(`Successfully made an admin`);
-            }
-            
-        })
-    }
+    const [openRoleEdit, setOpenRoleEdit] = useState(false);
+    const handleRoleEditOpen = () => setOpenRoleEdit(true);
+    const handleRoleEditClose = () => setOpenRoleEdit(false);
+    
     return (
         <>
            <StyledTableRow key={user._id}>
               <StyledTableCell component="th" scope="row">
                   {index+1}
               </StyledTableCell>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell component="th" scope="row" align="center" style={{fontSize:16,fontWeight:500}}>
+                  {user.name }
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center" style={{fontSize:16,fontWeight:500}}>
                   {user.email}
               </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell align="center">
                 {
-                  user.role !== 'admin'? <Button onClick={makeAdmin}>Make Admin</Button>:
-                  <Typography>Admin</Typography>
+                  user.role !== 'admin'? <Button variant='contained' style={{backgroundColor:'green'}} onClick={handleRoleEditOpen}>Make Admin</Button>:
+                  <Typography variant='body' style={{fontSize:16,fontWeight:500}}>Admin</Typography>
                 }
                 </StyledTableCell>
-              <StyledTableCell align="right">delete</StyledTableCell>
             </StyledTableRow> 
+            <UserRoleUpdate 
+              user={user}
+              openRoleEdit= {openRoleEdit}
+              refetch={refetch}
+              handleRoleEditClose={handleRoleEditClose}
+            ></UserRoleUpdate>
         </>
     );
 };

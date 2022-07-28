@@ -1,6 +1,6 @@
 import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import g01 from '../../assets/images/g01.jpg'
+import contactimage from '../../assets/images/CarouselImage/contactimage.gif'
 import React from 'react';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
@@ -14,6 +14,9 @@ const AboutCarDealer = () => {
                             About <span style={{color:'orange'}}>Car Dealer</span>
                 </Typography>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid item xs={12} md={6} className='pics'>
+                        <img src={contactimage} alt="" style={{width:'100%'}} />    
+                    </Grid>
                     <Grid item xs={12} md={6}>
                         <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0}}>
                             <CardContent style={{textAlign: 'justify'}}>
@@ -52,9 +55,7 @@ const AboutCarDealer = () => {
                             </CardContent>
                         </Card>        
                     </Grid>
-                    <Grid item xs={12} md={6} className='pics'>
-                        <img src={g01} alt="" style={{width:'100%'}} />    
-                    </Grid>
+                    
 
                 </Grid>
                 </Box>

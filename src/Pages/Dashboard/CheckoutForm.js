@@ -14,7 +14,6 @@ const CheckoutForm = ({bookedVehicle}) => {
     const [clientSecret, setClientSecret] = useState('');
     
     useEffect(()=>{
-        console.log(cost)
         fetch('http://localhost:5000/create-payment-intent',{
             method: 'POST',
             headers: {
