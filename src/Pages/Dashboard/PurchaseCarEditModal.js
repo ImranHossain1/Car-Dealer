@@ -117,9 +117,9 @@ const PurchaseCardEditModal = ({openEdit, handlePurchasedCarEditClose, bookedVeh
                         fullWidth
                         color="success"
                         id="outlined-basic2" 
-                        label="Address"
+                        label="Phone"
                         defaultValue={phone}
-                        type="text"
+                        type="number"
                         variant="outlined" 
                         {...register("phone", {
                             required:{

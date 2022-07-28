@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import useStyles from '../../hooks/useStyles';
+import PageTitle from '../Shared/PageTitle';
 const VehicleBooking = () => {
     const classes = useStyles();
     const {id} = useParams();
@@ -33,6 +34,7 @@ const VehicleBooking = () => {
     const rate =(Math.ceil(rating/count))
     return (
         <>
+            <PageTitle title="Vehicle"></PageTitle>
             <Navbar></Navbar>
             <Box sx={{flexGrow: 1 , my : 3 }}  style={{marginTop: '5%'}}>
                 <Container disableGutters >

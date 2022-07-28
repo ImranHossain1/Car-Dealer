@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import PageTitle from '../Shared/PageTitle';
 const ConfirmVehicle = () => {
     const { register, handleSubmit, watch, formState: { errors } , reset} = useForm();
     const [user, loading, error] = useAuthState(auth);
@@ -77,6 +78,7 @@ const ConfirmVehicle = () => {
     //console.log(user.displayName)
     return (
         <>
+            <PageTitle title="Confirm Vehicle"></PageTitle>
             <Navbar></Navbar>
             <Box sx={{flexGrow: 1 , my : 15 }} >
                 <Container disableGutters >
