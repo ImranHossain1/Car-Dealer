@@ -53,7 +53,7 @@ const CoontactUs = () => {
         })
     }
     return (
-        <Box sx={{ flexGrow: 1 , my : 3 }} >
+        <Box sx={{ flexGrow: 1 , mt : 3, my:8 }} >
             
                 <Box >
                     <LightSpeed>
@@ -62,14 +62,14 @@ const CoontactUs = () => {
                         </Typography>
                     </LightSpeed>
                 <Grid container spacing={{ md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} >
-                    <Grid item xs={12} md={6} className="map-frame" height="600px" mr={{xs:0,md:16}}>
+                    <Grid item xs={12} md={6} className="map-frame" height="600px" mr={{xs:0,md:10}}>
                         <Zoom>
                         <div id="map"></div>
                         </Zoom>
                     </Grid>
-                    <Grid item xs={12} md={5} height="650px" className="map-frame">
+                    <Grid item xs={12} md={5} height="650px" className="map-frame" >
                         <Zoom>
-                        <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0}}>
+                        <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0}} sx={{p:3}}>
                             <CardContent style={{textAlign: 'center'}}>
                                 <Slide left>
                                     <Typography variant="h5" style={{fontWeight:500, color:"gray"}} component="div" sx={{mb:'15px'}}>
