@@ -1,6 +1,6 @@
 # Car Dealer
 
-The Live Server link is: [Tourist Guide De](https://car-dealer-259e0.web.app/).
+The Live Server link is: [Car Dealer](https://car-dealer-259e0.web.app/).
 
 ## Packages Install
 
