@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import useVehicles from '../../hooks/useVehicles';
-import Loading from '../Shared/Loading';
 import { useForm } from 'react-hook-form';
 import { Alert, Avatar, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from '@mui/material';
 import { toast } from 'react-toastify';

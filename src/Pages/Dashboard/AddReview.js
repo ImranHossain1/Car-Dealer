@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { useForm } from 'react-hook-form';
-import { Alert, Avatar, FormControl, InputLabel, MenuItem, Paper, Rating, Select, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Avatar, Rating, Stack, TextField, Typography } from '@mui/material';
 import { toast } from 'react-toastify';
 const style = {
     position: 'absolute',

@@ -4,7 +4,6 @@ import car1 from '../../assets/images/CarouselImage/car1.jpg' ;
 import Grid from '@mui/material/Grid';
 import {Typography , Button , Container} from '@mui/material';
 import Box from '@mui/material/Box';
-import { height } from '@mui/system';
 import useStyles from '../../hooks/useStyles';
 import { Link } from 'react-router-dom';
 

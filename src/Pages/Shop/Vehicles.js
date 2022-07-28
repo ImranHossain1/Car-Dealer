@@ -3,11 +3,9 @@ import { Box, Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Shared/Navbar';
 import Vehicle from './Vehicle';
-import { useQuery } from 'react-query';
-import Loading from '../Shared/Loading';
 import { useParams } from 'react-router-dom';
 import PageTitle from '../Shared/PageTitle';
-import { Fade, LightSpeed, Zoom } from 'react-reveal';
+import { Fade, LightSpeed } from 'react-reveal';
 
 const Vehicles = () => {
     let {cons} = useParams();

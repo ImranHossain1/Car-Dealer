@@ -1,10 +1,6 @@
 import { Alert, Button, Card, CardContent, Grid, Stack, TextField, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import contactimage from '../../assets/images/CarouselImage/contactimage.gif'
 import React, { useEffect, useState } from 'react';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
-import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import mapboxgl from 'mapbox-gl';
 import { useForm } from 'react-hook-form';
 import { toast } from "react-toastify";
@@ -69,7 +65,7 @@ const CoontactUs = () => {
                     </Grid>
                     <Grid item xs={12} md={5} height="650px" className="map-frame" >
                         <Zoom>
-                        <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0}} sx={{p:3}}>
+                        <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0, p:3}}>
                             <CardContent style={{textAlign: 'center'}}>
                                 <Slide left>
                                     <Typography variant="h5" style={{fontWeight:500, color:"gray"}} component="div" sx={{mb:'15px'}}>

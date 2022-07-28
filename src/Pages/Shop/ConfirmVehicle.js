@@ -1,11 +1,8 @@
-import { Alert, Button, Card, CardContent, Divider, FormControl, Grid, InputLabel, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Button,  Grid, Stack, TextField, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import React from 'react';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
-import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import Navbar from '../Shared/Navbar';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import useStyles from '../../hooks/useStyles';
@@ -28,9 +25,7 @@ const ConfirmVehicle = () => {
     }
     //console.log(vehicle)
     const {_id, company, catagory, cost, img, quantity} = vehicle
-    //console.log(quantity-1)
     const onSubmit = e => {
-        //e.preventDefault();
        const confirmBooking = {
         carId: _id,
         cost: cost,

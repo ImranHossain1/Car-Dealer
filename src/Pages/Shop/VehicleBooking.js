@@ -1,9 +1,6 @@
 import { Button, Card, CardContent, Divider, Grid, Rating, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import React from 'react';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
-import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import Navbar from '../Shared/Navbar';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';

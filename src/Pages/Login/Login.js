@@ -1,5 +1,5 @@
-import { Alert, Box, Button, Divider, Grid, Stack, TextField, Typography } from '@mui/material';
-import { Container } from '@mui/system';
+import { Alert, Box, Button, Divider, Stack, TextField, Typography } from '@mui/material';
+
 import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -10,7 +10,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
 import Navbar from '../Shared/Navbar';
-import Footer from '../Shared/Footer';
 import PageTitle from '../Shared/PageTitle';
 import { Slide, Zoom } from 'react-reveal';
 const bannerBg = {
