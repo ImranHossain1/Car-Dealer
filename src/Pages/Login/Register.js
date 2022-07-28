@@ -10,6 +10,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
 import Navbar from '../Shared/Navbar';
+import PageTitle from '../Shared/PageTitle';
+import { Slide, Zoom } from 'react-reveal';
 const bannerBg = {
     flexGrow: 1,
     //padding: theme.spacing(3),
@@ -53,6 +55,7 @@ const Register = () => {
     };
     return (
         <>
+        <PageTitle title="Registration"></PageTitle>
         <Navbar></Navbar>
         <Box sx={bannerBg} style={{display:'flex', alignItems:'center', justifyContent:'center'}} >
                  <Box 
@@ -60,9 +63,12 @@ const Register = () => {
                         // borderRadius: '5%',
                         backgroundColor:'rgba(245, 227, 237, 0.85)',
                     }} width={{xs:'90%',sm:'70%', md:'50%'}} borderRadius={{xs:2, sm:3, md:4}}>
+                        <Slide top>
                         <Typography variant="h3" sx={{my:4, color: '#283747', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>
                             Please Register
                         </Typography>
+                        </Slide>
+                        <Zoom>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Box paddingX={{xs:3 , sm:4, md:5, lg:10}} style={{display: 'flex', flexDirection:'column', color: 'gray', alignItems:'center', opacity:'1.0' }}>
                                 <TextField 
@@ -138,6 +144,7 @@ const Register = () => {
                                 <Button variant='contained' onClick={()=>signInWithGoogle()} className={classes.googlebtn} fullWidth sx={{mb:8}}>Google Sign In</Button>
                             </Box>
                         </form>
+                        </Zoom>
                 </Box>
         </Box>
         </>

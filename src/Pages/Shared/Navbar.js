@@ -60,11 +60,12 @@ const Navbar = () => {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <DirectionsCarIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>
+            <Link to='/' style={{textDecoration:'none', color: 'white'}}>
             <Typography
               variant="h6"
               noWrap
               component="a"
-              href="/"
+              
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -77,6 +78,7 @@ const Navbar = () => {
             >
               Car Dealer
             </Typography>
+            </Link>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
@@ -123,25 +125,7 @@ const Navbar = () => {
                 ))}
               </Menu>
             </Box>
-            <DirectionsCarIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}/>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              Car Dealer
-            </Typography>
+           
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                 <Link key={page} style={{textDecoration: 'none', color:'white'}} to={`/${page}`}>

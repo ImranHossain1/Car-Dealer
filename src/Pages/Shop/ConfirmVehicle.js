@@ -5,7 +5,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
 import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import Navbar from '../Shared/Navbar';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import useStyles from '../../hooks/useStyles';
@@ -16,6 +16,7 @@ import auth from '../../firebase.init';
 const ConfirmVehicle = () => {
     const { register, handleSubmit, watch, formState: { errors } , reset} = useForm();
     const [user, loading, error] = useAuthState(auth);
+    let navigate = useNavigate();
     const classes = useStyles();
     const {id} = useParams();
     const url = `https://thawing-ridge-58827.herokuapp.com/vehicle/${id}`
@@ -64,6 +65,7 @@ const ConfirmVehicle = () => {
             .then(data=>{
                 if(data.success){
                     toast(`You have confirm a ${catagory}, from ${company}`)
+                    navigate('/dashboard')
                 }
                 else{
                     toast.error(`Already have brought a ${catagory} from ${company}`)

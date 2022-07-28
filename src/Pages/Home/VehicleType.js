@@ -1,11 +1,13 @@
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Bounce } from 'react-reveal';
 import { Link } from 'react-router-dom';
 
 const VehicleType = ({t}) => {
     const {type, offer, price, img} = t
     return (
         <Grid item xs={4} sm={4} md={3} className='pics'>
+            <Bounce top>
             <Link to={`/vehicles/${type}`} style={{textDecoration:'none', color:'white'}}>
                 <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0, backgroundColor: '#1d242e', opacity:0.95}} >
                     <CardMedia
@@ -24,7 +26,8 @@ const VehicleType = ({t}) => {
                         </Typography>
                     </CardContent>
                 </Card> 
-            </Link>       
+            </Link>     
+            </Bounce>  
         </Grid>
     );
 };

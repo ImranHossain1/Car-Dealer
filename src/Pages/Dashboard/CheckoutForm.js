@@ -1,6 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({bookedVehicle}) => {
     const stripe = useStripe();
@@ -12,7 +13,9 @@ const CheckoutForm = ({bookedVehicle}) => {
     const [transactionId, setTransactionId] = useState('');
     const {_id,cost, userEmail, userName} = bookedVehicle;
     const [clientSecret, setClientSecret] = useState('');
-    
+    const [payDisabled, setPayDisabled] = useState(true);
+    const [backtoDashboard, setBacktoDashbooard] = useState(false)
+    let navigate = useNavigate();
     useEffect(()=>{
         fetch('https://thawing-ridge-58827.herokuapp.com/create-payment-intent',{
             method: 'POST',
@@ -47,7 +50,7 @@ const CheckoutForm = ({bookedVehicle}) => {
         setCardError(error?.message || '');
         setSuccess('');
         setProcessing(true)
-
+        setPayDisabled(false)
         //CONFIRM CARD PAYMENT
         const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
             clientSecret,
@@ -70,7 +73,6 @@ const CheckoutForm = ({bookedVehicle}) => {
               setCardError('');
               setTransactionId(paymentIntent.id)
               setSuccess('Congrats! Your payment is Completed');
-
               //store payment on DB
               const payment = {
                   bookedVehicle: _id,
@@ -85,9 +87,15 @@ const CheckoutForm = ({bookedVehicle}) => {
                     body: JSON.stringify(payment)
               })
               .then(res=>res.json())
-              .then(data=> {
-                  setProcessing(false)
-                  setDisabledButton(false)
+              .then(data=>{
+                    if(data){
+                        setProcessing(false)
+                        setDisabledButton(false)
+                        setBacktoDashbooard(true)
+                    }
+                    else{
+                       setPayDisabled(true)
+                    }
                 })
 
           }
@@ -112,9 +120,10 @@ const CheckoutForm = ({bookedVehicle}) => {
                         },
                     }}
                 />
-                <Button sx={{mt:2}} variant="contained" type="submit" disabled={!stripe || !clientSecret || success || disabledButton}>
+                { payDisabled && <Button sx={{mt:4}} variant="contained" type="submit" disabled={!stripe || !clientSecret || success || disabledButton}>
                     Pay
                 </Button>
+                }
             </form>
             {
                 cardError && <Typography color='red'>{cardError}</Typography>
@@ -124,6 +133,12 @@ const CheckoutForm = ({bookedVehicle}) => {
                     <p>{success} </p>
                     <p>Your Transaction ID: <span className='text-orange-500 font-bold'>{transactionId}</span></p>
                 </div>
+            }
+            { backtoDashboard && <Link to='/dashboard' style={{textDecoration:'none'}}>
+                    <Button sx={{mt:1}} variant="contained">
+                        Back To Dashboard
+                    </Button>
+                </Link>
             }
         </>
     );

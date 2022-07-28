@@ -5,19 +5,27 @@ import React from 'react';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
 import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
+import { LightSpeed, Zoom } from 'react-reveal';
 const AboutCarDealer = () => {
     return (
         <Box sx={{ flexGrow: 1 , my : 3 }} >
             <Container disableGutters >
                 <Box >
+                <LightSpeed>
                 <Typography variant ="h3" sx={{my:5, color: '#1C2833', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>
                             About <span style={{color:'orange'}}>Car Dealer</span>
                 </Typography>
+                </LightSpeed>
+                
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     <Grid item xs={12} md={6} className='pics'>
+                        <Zoom>
                         <img src={contactimage} alt="" style={{width:'100%'}} />    
+                        </Zoom>
+                        
                     </Grid>
                     <Grid item xs={12} md={6}>
+                        <Zoom>
                         <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0}}>
                             <CardContent style={{textAlign: 'justify'}}>
                                 <Typography variant="h5" component="div" sx={{mb:'15px'}}>
@@ -53,7 +61,8 @@ const AboutCarDealer = () => {
                                 </Box>
 
                             </CardContent>
-                        </Card>        
+                        </Card>   
+                        </Zoom>     
                     </Grid>
                     
 

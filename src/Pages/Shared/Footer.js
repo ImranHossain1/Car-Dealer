@@ -6,11 +6,13 @@ import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import useStyles from '../../hooks/useStyles';
+import { Bounce } from 'react-reveal';
 const Footer = () => {
     const classes = useStyles();
     return (
         <footer>
             <Box bgcolor="#0A2357" >
+                <Bounce bottom>
                 <Container sx={{pt:8 , pb:2}}>
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} style={{color: "White"}}>
                         <Grid item xs={12} sm={6} md={3}>
@@ -70,6 +72,7 @@ const Footer = () => {
                         <a href="https://www.instagram.com/imranhsn14/"><InstagramIcon style={{color: "#F0622D"}} fontSize="large"></InstagramIcon></a>
                     </Box>
                 </Container>
+                </Bounce>
             </Box>
         </footer>
     );

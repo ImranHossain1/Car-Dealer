@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useVehicles from '../../hooks/useVehicles';
 import VehicleListRow from './VehicleListRow';
+import PageTitle from '../Shared/PageTitle';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -29,6 +30,7 @@ const VehicleList = () => {
     }
     return (
         <>
+        <PageTitle title="Vehicle List"></PageTitle>
         <TableContainer component={Paper}>
             <Table aria-label="customized table">
                 <TableHead>

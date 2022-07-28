@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import useNotifications from '../../hooks/useNotifications';
 import Notification from './Notification';
 import { Button, Typography } from '@mui/material';
+import PageTitle from '../Shared/PageTitle';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -61,6 +62,7 @@ const Notifications = () => {
     }
     return (
         <>
+        <PageTitle title="Notifications"></PageTitle>
         <Typography variant='h4' textAlign='center' style={{fontWeight:700}} sx={{my:5}}>
             Notifications { !(count===0) && <small style={{color:'red'}}>({count} new message)</small>}
             {

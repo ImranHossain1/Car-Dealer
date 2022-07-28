@@ -2,6 +2,7 @@ import { Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, T
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import PageTitle from '../Shared/PageTitle';
 
 const AddViechels = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
@@ -77,6 +78,8 @@ const AddViechels = () => {
         //console.log(location)
     }
     return (
+        <>
+        <PageTitle title="Add Vehicle"></PageTitle>
         <Box sx={{mb: 12}}>
             <Typography variant="h3" sx={{my:4, color: '#283747', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:25, lg:30}}>
                 Add a new Vehicle
@@ -197,6 +200,7 @@ const AddViechels = () => {
                 </Box>
             </form>
         </Box>
+        </>
     );
 };
 

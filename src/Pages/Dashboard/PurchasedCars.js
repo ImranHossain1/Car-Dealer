@@ -13,6 +13,7 @@ import UserRow from './UserRow';
 import PurchasedCar from './PurchasedCar';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import PageTitle from '../Shared/PageTitle';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -44,6 +45,7 @@ const PurchasedCars = () => {
     }
     return (
         <TableContainer component={Paper}>
+            <PageTitle title="My Cars"></PageTitle>
             <Table aria-label="customized table">
                 <TableHead>
                     <TableRow>

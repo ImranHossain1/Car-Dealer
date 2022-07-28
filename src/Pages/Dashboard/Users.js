@@ -10,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import UserRow from './UserRow';
+import PageTitle from '../Shared/PageTitle';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -36,6 +37,8 @@ const Users = () => {
         return <Loading></Loading>
     }
     return (
+        <>
+        <PageTitle title="Users"></PageTitle>
         <TableContainer component={Paper}>
             <Table aria-label="customized table">
                 <TableHead>
@@ -52,7 +55,8 @@ const Users = () => {
                     ))}
                 </TableBody>
             </Table>
-    </TableContainer>
+        </TableContainer>
+        </>
     );
 };
 

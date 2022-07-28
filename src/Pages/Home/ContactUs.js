@@ -8,6 +8,7 @@ import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import mapboxgl from 'mapbox-gl';
 import { useForm } from 'react-hook-form';
 import { toast } from "react-toastify";
+import { Bounce, LightSpeed, Slide, Zoom } from 'react-reveal';
 mapboxgl.accessToken = 'pk.eyJ1IjoiaW1yYW4xNDAyIiwiYSI6ImNsMXhhdjJ5bTAxMWUza25yaGZhM2FwZTMifQ.CJwentHAqRKYbjzMhr7L9w';
 const CoontactUs = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
@@ -55,20 +56,27 @@ const CoontactUs = () => {
         <Box sx={{ flexGrow: 1 , my : 3 }} >
             
                 <Box >
-                <Typography variant ="h3" sx={{my:5, color: '#1C2833', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>
-                            About <span style={{color:'orange'}}>Contact Us</span>
-                </Typography>
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                    <LightSpeed>
+                        <Typography variant ="h3" sx={{my:5, color: '#1C2833', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>
+                                    About <span style={{color:'orange'}}>Contact Us</span>
+                        </Typography>
+                    </LightSpeed>
+                <Grid container spacing={{ md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} >
                     <Grid item xs={12} md={6} className="map-frame" height="600px" mr={{xs:0,md:16}}>
+                        <Zoom>
                         <div id="map"></div>
+                        </Zoom>
                     </Grid>
-                    <Grid item xs={12} md={5} height="650px" className="map-frame" >
+                    <Grid item xs={12} md={5} height="650px" className="map-frame">
+                        <Zoom>
                         <Card sx={{ minWidth: 275, border: 0 ,boxShadow: 0}}>
                             <CardContent style={{textAlign: 'center'}}>
-                                <Typography variant="h5" style={{fontWeight:500, color:"gray"}} component="div" sx={{mb:'15px'}}>
-                                    If you have any query, Feel free to contact us.
-                                </Typography>
-                                
+                                <Slide left>
+                                    <Typography variant="h5" style={{fontWeight:500, color:"gray"}} component="div" sx={{mb:'15px'}}>
+                                        If you have any query, Feel free to contact us.
+                                    </Typography>
+                                </Slide>
+                                <Bounce right>
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <Box  style={{display: 'flex', flexDirection:'column', color: 'gray', alignItems:'center', opacity:'1.0' }}>
                                         <TextField 
@@ -136,9 +144,10 @@ const CoontactUs = () => {
                                         }
                                     </Box>
                                 </form>
-
+                                </Bounce>
                             </CardContent>
                         </Card>        
+                        </Zoom>
                     </Grid>
                     
 

@@ -6,6 +6,8 @@ import Vehicle from './Vehicle';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import { useParams } from 'react-router-dom';
+import PageTitle from '../Shared/PageTitle';
+import { Fade, LightSpeed, Zoom } from 'react-reveal';
 
 const Vehicles = () => {
     let {cons} = useParams();
@@ -72,15 +74,19 @@ const Vehicles = () => {
     //console.log(vehicles)
     return (
         <>
+            <PageTitle title="Vehicles"></PageTitle>
             <Navbar></Navbar>
             <Container sx={{mt:15 , mx:'auto'}}>
                 <Grid container spacing={{ xs: 3, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} >
                     <Grid item xs={12} sm={12} md={3} >
+                        <Fade left>
                         <Typography textAlign='center' variant='h6'>
                             Sort by:
                         </Typography>
+                        </Fade>
                     </Grid>
                     <Grid item xs={12} sm={12} md={3} >
+                        <Fade right>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label3">Company</InputLabel>
                             <Select
@@ -95,8 +101,10 @@ const Vehicles = () => {
                                 }
                             </Select>
                         </FormControl>
+                        </Fade>
                     </Grid>
                     <Grid item xs={12} sm={12} md={3} >
+                        <Fade right>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label1">Category</InputLabel>
                             <Select
@@ -111,29 +119,36 @@ const Vehicles = () => {
                                 }
                             </Select>
                         </FormControl>
+                        </Fade>
                     </Grid>
                     <Grid item xs={12} sm={12} md={3} >
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label1">Condition</InputLabel>
-                        <Select
-                        labelId="demo-simple-select-label1"
-                        id="demo-simple-select1"
-                        value={condition}
-                        label="Condition"
-                        onChange={handleConditionChange}
-                        >
-                            {
-                                conditions.map(con=><MenuItem key={con} value={con}>{con}</MenuItem>)
-                            }
-                        </Select>
-            </FormControl>
+                        <Fade right>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label1">Condition</InputLabel>
+                                <Select
+                                labelId="demo-simple-select-label1"
+                                id="demo-simple-select1"
+                                value={condition}
+                                label="Condition"
+                                onChange={handleConditionChange}
+                                >
+                                    {
+                                        conditions.map(con=><MenuItem key={con} value={con}>{con}</MenuItem>)
+                                    }
+                                </Select>
+                            </FormControl>
+                        </Fade>
                     </Grid>
                 </Grid>
             
             </Container>
             <Box  sx={{mt:5}}>
+                <LightSpeed>
                 <Typography variant ="h3" sx={{my:5, color: '#1C2833', fontWeight: 800, textAlign: 'center'}} fontSize={{xs:20, sm:30, lg:40}}>Select Your Favourite Car</Typography>
+                </LightSpeed>
+                
                 <Container style={{padding: '20px'}}>
+                
                 <Grid container spacing={{ xs: 3, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }}>
                     {
                         vehicles?.map(vehicle=><Vehicle
@@ -143,6 +158,7 @@ const Vehicles = () => {
                         </Vehicle>)
                     }
                 </Grid>
+                <Fade left>
                 {
                     pageCount>1 && <Pagination count={pageCount} 
                         onChange={handlePagination}
@@ -150,6 +166,7 @@ const Vehicles = () => {
                         sx={{my:5}} 
                         style={{display:'flex' ,justifyContent: 'center'}}/>
                 }
+                </Fade>
 
             </Container>
             </Box>
