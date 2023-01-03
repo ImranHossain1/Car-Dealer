@@ -33,7 +33,7 @@ const AddReview = ({openReview, handleReviewClose, bookedVehicle,vehicle, refetc
             rating: rating,
             comment: data.comment
         }
-        fetch('https://thawing-ridge-58827.herokuapp.com/review', {
+        fetch('https://car-dealer-server-production.up.railway.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -109,7 +109,7 @@ export default function Dashboard() {
 
   React.useEffect(()=>{
     if(user){
-    fetch(`https://thawing-ridge-58827.herokuapp.com/user/${user.email}`,{
+    fetch(`https://car-dealer-server-production.up.railway.app/user/${user.email}`,{
         method: 'GET',
         headers: {
             'content-type' : 'application/json',

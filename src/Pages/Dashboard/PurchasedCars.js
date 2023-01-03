@@ -32,7 +32,7 @@ const PurchasedCars = () => {
     const [user, loading] = useAuthState(auth);
     //console.log(user.email)
     //const navigate = useNavigate();
-    const {data: bookedVehicles, isLoading, refetch} = useQuery(["bookedVehicles"], ()=>fetch(`https://thawing-ridge-58827.herokuapp.com/booking?user=${user.email}`,{
+    const {data: bookedVehicles, isLoading, refetch} = useQuery(["bookedVehicles"], ()=>fetch(`https://car-dealer-server-production.up.railway.app/booking?user=${user.email}`,{
         method: 'GET', 
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

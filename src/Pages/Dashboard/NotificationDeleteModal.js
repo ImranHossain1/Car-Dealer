@@ -17,7 +17,7 @@ const style = {
 const NotificationDeleteModal = ({openDelete, handleNotificationDeleteClose, message, refetch}) => {
     const {subject, _id} = message;
     const handleDelete = ()=>{
-        fetch(`https://thawing-ridge-58827.herokuapp.com/notification/${_id}`,{
+        fetch(`https://car-dealer-server-production.up.railway.app/notification/${_id}`,{
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

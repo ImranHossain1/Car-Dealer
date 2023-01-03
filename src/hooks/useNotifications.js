@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 const useNotifications = () => {
-        const {data: messages, isLoading1, refetch} = useQuery('messages', ()=>fetch('https://thawing-ridge-58827.herokuapp.com/notifications',{
+        const {data: messages, isLoading1, refetch} = useQuery('messages', ()=>fetch('https://car-dealer-server-production.up.railway.app/notifications',{
             method: 'GET', 
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

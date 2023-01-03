@@ -30,7 +30,7 @@ const PurchaseCardEditModal = ({openEdit, handlePurchasedCarEditClose, bookedVeh
            phone: data.phone
         }
         //console.log(vehicle)
-        fetch(`https://thawing-ridge-58827.herokuapp.com/bookedVehicle/${_id}`, {
+        fetch(`https://car-dealer-server-production.up.railway.app/bookedVehicle/${_id}`, {
                     method: 'PUT',
                     headers: {
                         'content-type' : 'application/json',

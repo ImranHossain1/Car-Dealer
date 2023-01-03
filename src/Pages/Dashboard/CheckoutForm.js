@@ -17,7 +17,7 @@ const CheckoutForm = ({bookedVehicle}) => {
     const [backtoDashboard, setBacktoDashbooard] = useState(false)
     let navigate = useNavigate();
     useEffect(()=>{
-        fetch('https://thawing-ridge-58827.herokuapp.com/create-payment-intent',{
+        fetch('https://car-dealer-server-production.up.railway.app/create-payment-intent',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -78,7 +78,7 @@ const CheckoutForm = ({bookedVehicle}) => {
                   bookedVehicle: _id,
                   transactionId: paymentIntent.id
               }
-              fetch(`https://thawing-ridge-58827.herokuapp.com/booking/${_id}`,{
+              fetch(`https://car-dealer-server-production.up.railway.app/booking/${_id}`,{
                   method: 'PATCH',
                   headers: {
                     'content-type': 'application/json',

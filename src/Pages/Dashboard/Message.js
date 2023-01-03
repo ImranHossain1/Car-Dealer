@@ -19,7 +19,7 @@ const bannerBg = {
 
 const Message = () => {
     const {id} = useParams();
-    const url = `https://thawing-ridge-58827.herokuapp.com/notification/${id}`;
+    const url = `https://car-dealer-server-production.up.railway.app/notification/${id}`;
     
     const {data: notification, isLoading} = useQuery(['notification', id], ()=>fetch(url,{
          method: 'GET',

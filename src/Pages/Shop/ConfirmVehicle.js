@@ -17,7 +17,7 @@ const ConfirmVehicle = () => {
     let navigate = useNavigate();
     const classes = useStyles();
     const {id} = useParams();
-    const url = `https://thawing-ridge-58827.herokuapp.com/vehicle/${id}`
+    const url = `https://car-dealer-server-production.up.railway.app/vehicle/${id}`
     const {data:vehicle, isLoading, refetch} = useQuery(['vehicle', id], ()=>fetch(url,{
         method: 'GET'
     }).then(res=>res.json()));
@@ -38,7 +38,7 @@ const ConfirmVehicle = () => {
     const SubQuantity = {
         quantity: quantity-1
     }
-    fetch(`https://thawing-ridge-58827.herokuapp.com/vehicle/${id}`,{
+    fetch(`https://car-dealer-server-production.up.railway.app/vehicle/${id}`,{
         method: 'PATCH',
         headers: {
         'content-type': 'application/json',
@@ -49,7 +49,7 @@ const ConfirmVehicle = () => {
     .then(res=>res.json())
     .then(data=> {
         if(data.success){
-            fetch('https://thawing-ridge-58827.herokuapp.com/bookedVehicle', {
+            fetch('https://car-dealer-server-production.up.railway.app/bookedVehicle', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

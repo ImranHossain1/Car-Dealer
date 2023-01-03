@@ -15,20 +15,20 @@ const ExclusiveCars = () => {
     const [size, setSize] = useState(4);
     const [vehicles, setVehicles] = useState([]);
     const condition ='Exclusive';
-    /* const {data:vehicles, isLoading, refetch} = useQuery(['ExclusiveVehicles'], ()=>fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles/${condition}`,{
+    /* const {data:vehicles, isLoading, refetch} = useQuery(['ExclusiveVehicles'], ()=>fetch(`https://car-dealer-server-production.up.railway.app/vehicles/${condition}`,{
         method: 'GET'
     }).then(res=>res.json()));
     if(isLoading){
         <Loading></Loading>
     } */
     useEffect( () =>{
-        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles?page=${page}&size=${size}&condition=${condition}`)
+        fetch(`https://car-dealer-server-production.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}`)
         .then(res => res.json())
         .then(data => setVehicles(data));
     }, [page, size, condition]);
 
     useEffect( () =>{
-        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicleCount?condition=${condition}`)
+        fetch(`https://car-dealer-server-production.up.railway.app/vehicleCount?condition=${condition}`)
         .then(res => res.json())
         .then(data =>{
             const count = data.count;

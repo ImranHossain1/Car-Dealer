@@ -5,7 +5,7 @@ const useAdmin = user=>{
     useEffect(()=>{
         const email = user?.email;
         if(email){
-            fetch(`https://thawing-ridge-58827.herokuapp.com/admin/${email}`,{
+            fetch(`https://car-dealer-server-production.up.railway.app/admin/${email}`,{
                 method: 'GET',
                 headers:{
                     'content-type': 'application/json',

@@ -26,7 +26,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   
   
 const Users = () => {
-    const {data: users, isLoading, refetch} = useQuery('users', ()=>fetch('https://thawing-ridge-58827.herokuapp.com/users',{
+    const {data: users, isLoading, refetch} = useQuery('users', ()=>fetch('https://car-dealer-server-production.up.railway.app/users',{
         method: 'GET', 
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

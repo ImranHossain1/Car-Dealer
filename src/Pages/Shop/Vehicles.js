@@ -55,13 +55,13 @@ const Vehicles = () => {
         setCompany(event.target.value)
       };
     useEffect( () =>{
-        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`)
+        fetch(`https://car-dealer-server-production.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`)
         .then(res => res.json())
         .then(data => setVehicles(data));
     }, [page, size, condition, company, category]);
 
     useEffect( () =>{
-        fetch(`https://thawing-ridge-58827.herokuapp.com/vehicleCount?condition=${condition}&company=${company}&category=${category}`)
+        fetch(`https://car-dealer-server-production.up.railway.app/vehicleCount?condition=${condition}&company=${company}&category=${category}`)
         .then(res => res.json())
         .then(data =>{
             const count = data.count;

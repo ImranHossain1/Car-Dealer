@@ -35,7 +35,7 @@ const Notifications = () => {
         unread : false
     }
     const handleNotification = id =>{
-        fetch(`https://thawing-ridge-58827.herokuapp.com/notification/${id}`,{
+        fetch(`https://car-dealer-server-production.up.railway.app/notification/${id}`,{
                   method: 'PATCH',
                   headers: {
                     'content-type': 'application/json',

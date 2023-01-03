@@ -10,7 +10,7 @@ const useToken = user =>{
             email: email
         }
         if(email){
-            fetch(`https://thawing-ridge-58827.herokuapp.com/user/${email}`,{
+            fetch(`https://car-dealer-server-production.up.railway.app/user/${email}`,{
                 method: 'PUT',
                 headers:{
                     'content-type': 'application/json'

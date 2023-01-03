@@ -30,7 +30,7 @@ const CoontactUs = () => {
           unread: true
         }
         console.log(mail)
-        fetch('https://thawing-ridge-58827.herokuapp.com/notification',{
+        fetch('https://car-dealer-server-production.up.railway.app/notification',{
           method: 'POST',
           headers: {
               'content-type' : 'application/json'

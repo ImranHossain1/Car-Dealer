@@ -20,7 +20,7 @@ const UserRoleUpdate = ({user,openRoleEdit, refetch,handleRoleEditClose}) => {
     }
     const makeAdmin =()=>{
         //console.log(email);
-        fetch(`https://thawing-ridge-58827.herokuapp.com/user/admin/${email}`,{
+        fetch(`https://car-dealer-server-production.up.railway.app/user/admin/${email}`,{
             method: 'PUT',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

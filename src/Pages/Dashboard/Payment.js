@@ -28,7 +28,7 @@ const stripePromise = loadStripe('pk_test_51L7ggVFbphkgAKK4OPhZ0A288iRm9B6d1vb4E
 
 const Payment = () => {
     const {id} = useParams();
-    const url = `https://thawing-ridge-58827.herokuapp.com/booking/${id}`;
+    const url = `https://car-dealer-server-production.up.railway.app/booking/${id}`;
     const {data: bookedVehicle, isLoading} = useQuery(['booking', id], ()=>fetch(url,{
         method: 'GET', 
         headers:{

@@ -46,7 +46,7 @@ const AddViechels = () => {
                     img: img
                 }
                 //send data to db
-                fetch('https://thawing-ridge-58827.herokuapp.com/vehicle', {
+                fetch('https://car-dealer-server-production.up.railway.app/vehicle', {
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json',
