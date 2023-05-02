@@ -30,7 +30,7 @@ const ConfirmVehicle = () => {
   let navigate = useNavigate();
   const classes = useStyles();
   const { id } = useParams();
-  const url = `https://car-dealer-server-production.up.railway.app/vehicle/${id}`;
+  const url = `https://car-dealer-server-production-4828.up.railway.app/vehicle/${id}`;
   const {
     data: vehicle,
     isLoading,
@@ -57,19 +57,22 @@ const ConfirmVehicle = () => {
     const SubQuantity = {
       quantity: quantity - 1,
     };
-    fetch(`https://car-dealer-server-production.up.railway.app/vehicle/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(SubQuantity),
-    })
+    fetch(
+      `https://car-dealer-server-production-4828.up.railway.app/vehicle/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(SubQuantity),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           fetch(
-            "https://car-dealer-server-production.up.railway.app/bookedVehicle",
+            "https://car-dealer-server-production-4828.up.railway.app/bookedVehicle",
             {
               method: "POST",
               headers: {

@@ -52,7 +52,7 @@ const AddReview = ({
       rating: rating,
       comment: data.comment,
     };
-    fetch("https://car-dealer-server-production.up.railway.app/review", {
+    fetch("https://car-dealer-server-production-4828.up.railway.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -23,7 +23,7 @@ const PurchaseCarDeleteModal = ({
   const { userName, address, phone, cost, _id } = bookedVehicle;
   const handleDelete = () => {
     fetch(
-      `https://car-dealer-server-production.up.railway.app/bookedVehicle/${_id}`,
+      `https://car-dealer-server-production-4828.up.railway.app/bookedVehicle/${_id}`,
       {
         method: "DELETE",
         headers: {

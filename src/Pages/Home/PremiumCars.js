@@ -15,7 +15,7 @@ const PremiumCars = () => {
   const [size, setSize] = useState(4);
   const [vehicles, setVehicles] = useState([]);
   const condition = "Premium";
-  /* const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`https://car-dealer-server-production.up.railway.app/vehicles/${condition}`,{
+  /* const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`https://car-dealer-server-production-4828.up.railway.app/vehicles/${condition}`,{
         method: 'GET'
     }).then(res=>res.json()));
     if(isLoading){
@@ -23,7 +23,7 @@ const PremiumCars = () => {
     } */
   useEffect(() => {
     fetch(
-      `https://car-dealer-server-production.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}`
+      `https://car-dealer-server-production-4828.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}`
     )
       .then((res) => res.json())
       .then((data) => setVehicles(data));
@@ -31,7 +31,7 @@ const PremiumCars = () => {
 
   useEffect(() => {
     fetch(
-      `https://car-dealer-server-production.up.railway.app/vehicleCount?condition=${condition}`
+      `https://car-dealer-server-production-4828.up.railway.app/vehicleCount?condition=${condition}`
     )
       .then((res) => res.json())
       .then((data) => {

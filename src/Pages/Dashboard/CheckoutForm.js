@@ -18,7 +18,7 @@ const CheckoutForm = ({ bookedVehicle }) => {
   let navigate = useNavigate();
   useEffect(() => {
     fetch(
-      "https://car-dealer-server-production.up.railway.app/create-payment-intent",
+      "https://car-dealer-server-production-4828.up.railway.app/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -78,7 +78,7 @@ const CheckoutForm = ({ bookedVehicle }) => {
         transactionId: paymentIntent.id,
       };
       fetch(
-        `https://car-dealer-server-production.up.railway.app/booking/${_id}`,
+        `https://car-dealer-server-production-4828.up.railway.app/booking/${_id}`,
         {
           method: "PATCH",
           headers: {

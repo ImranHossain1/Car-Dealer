@@ -7,9 +7,9 @@ const useVehicles = () => {
     isLoading,
     refetch,
   } = useQuery("vehicles", () =>
-    fetch("https://car-dealer-server-production.up.railway.app/vehicles").then(
-      (res) => res.json()
-    )
+    fetch(
+      "https://car-dealer-server-production-4828.up.railway.app/vehicles"
+    ).then((res) => res.json())
   );
   return [vehicles, isLoading, refetch];
 };

@@ -36,7 +36,7 @@ const Notifications = () => {
   };
   const handleNotification = (id) => {
     fetch(
-      `https://car-dealer-server-production.up.railway.app/notification/${id}`,
+      `https://car-dealer-server-production-4828.up.railway.app/notification/${id}`,
       {
         method: "PATCH",
         headers: {

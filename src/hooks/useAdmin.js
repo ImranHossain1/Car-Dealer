@@ -6,7 +6,7 @@ const useAdmin = (user) => {
     const email = user?.email;
     if (email) {
       fetch(
-        `https://car-dealer-server-production.up.railway.app/admin/${email}`,
+        `https://car-dealer-server-production-4828.up.railway.app/admin/${email}`,
         {
           method: "GET",
           headers: {

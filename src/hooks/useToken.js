@@ -11,7 +11,7 @@ const useToken = (user) => {
     };
     if (email) {
       fetch(
-        `https://car-dealer-server-production.up.railway.app/user/${email}`,
+        `https://car-dealer-server-production-4828.up.railway.app/user/${email}`,
         {
           method: "PUT",
           headers: {

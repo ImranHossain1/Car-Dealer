@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import image1 from '../../assets/images/CarouselImage/carousel1.jpg'
-import image2 from '../../assets/images/CarouselImage/carousel2.jpg'
-import image3 from '../../assets/images/CarouselImage/carousel3.webp'
-import image4 from '../../assets/images/CarouselImage/carousel4.webp'
-import image5 from '../../assets/images/CarouselImage/carousel5.webp'
-import image6 from '../../assets/images/CarouselImage/carousel6.jpg'
-import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
-import ArrowForwardIosTwoToneIcon from '@mui/icons-material/ArrowForwardIosTwoTone';
+import image1 from "../../assets/images/CarouselImage/carousel1.jpg";
+import image2 from "../../assets/images/CarouselImage/carousel2.jpg";
+import image3 from "../../assets/images/CarouselImage/carousel3.webp";
+import image4 from "../../assets/images/CarouselImage/carousel4.webp";
+import image5 from "../../assets/images/CarouselImage/carousel5.webp";
+import image6 from "../../assets/images/CarouselImage/carousel6.jpg";
+import ArrowBackIosNewTwoToneIcon from "@mui/icons-material/ArrowBackIosNewTwoTone";
+import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 import { Box } from "@mui/material";
 const PreviousBtn = (props) => {
   // console.log(props);
@@ -30,13 +30,13 @@ const NextBtn = (props) => {
 };
 
 const CarCarousel = () => {
-    const data = [image1, image2, image3, image4, image5, image6]
+  const data = [image1, image2, image3, image4, image5, image6];
   return (
     <div style={{ margin: "64px 0" }} className="carousel2">
       <Slider
         autoplay
         autoplaySpeed={4000}
-        dots= {true}
+        dots={true}
         initialSlide={2}
         infinite
         prevArrow={<PreviousBtn />}
@@ -53,7 +53,7 @@ const CarCarousel = () => {
                   objectFit: "cover",
                   borderRadius: "10px",
                 }}
-                className='pics'
+                className="pics"
               />
             </div>
           );
@@ -61,8 +61,8 @@ const CarCarousel = () => {
         dotsClass="slick-dots custom-indicator2"
       >
         {data.map((item, index) => (
-          <Box key={index} height={{xs:'25vh', sm:'40vh', lg:'75vh'}}>
-            <img src={item} alt="" style={{ width: "100%", height:'100%'}} />
+          <Box key={index} height={{ xs: "25vh", sm: "40vh", lg: "75vh" }}>
+            <img src={item} alt="" style={{ width: "100%", height: "100%" }} />
           </Box>
         ))}
       </Slider>

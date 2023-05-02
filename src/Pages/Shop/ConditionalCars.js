@@ -20,7 +20,7 @@ const ConditionalCars = () => {
   }
   useEffect(() => {
     fetch(
-      `https://car-dealer-server-production.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}`
+      `https://car-dealer-server-production-4828.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}`
     )
       .then((res) => res.json())
       .then((data) => setVehicles(data));
@@ -28,7 +28,7 @@ const ConditionalCars = () => {
 
   useEffect(() => {
     fetch(
-      `https://car-dealer-server-production.up.railway.app/vehicleCount/${condition}`
+      `https://car-dealer-server-production-4828.up.railway.app/vehicleCount/${condition}`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -110,7 +110,7 @@ export default function Dashboard() {
   React.useEffect(() => {
     if (user) {
       fetch(
-        `https://car-dealer-server-production.up.railway.app/user/${user.email}`,
+        `https://car-dealer-server-production-4828.up.railway.app/user/${user.email}`,
         {
           method: "GET",
           headers: {

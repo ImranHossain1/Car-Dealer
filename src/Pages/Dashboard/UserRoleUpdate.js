@@ -26,7 +26,7 @@ const UserRoleUpdate = ({
   const makeAdmin = () => {
     //console.log(email);
     fetch(
-      `https://car-dealer-server-production.up.railway.app/user/admin/${email}`,
+      `https://car-dealer-server-production-4828.up.railway.app/user/admin/${email}`,
       {
         method: "PUT",
         headers: {

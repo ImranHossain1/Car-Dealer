@@ -35,7 +35,7 @@ const PurchasedCars = () => {
     refetch,
   } = useQuery(["bookedVehicles"], () =>
     fetch(
-      `https://car-dealer-server-production.up.railway.app/booking?user=${user.email}`,
+      `https://car-dealer-server-production-4828.up.railway.app/booking?user=${user.email}`,
       {
         method: "GET",
         headers: {

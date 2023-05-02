@@ -50,7 +50,7 @@ const PurchaseCardEditModal = ({
     };
     //console.log(vehicle)
     fetch(
-      `https://car-dealer-server-production.up.railway.app/bookedVehicle/${_id}`,
+      `https://car-dealer-server-production-4828.up.railway.app/bookedVehicle/${_id}`,
       {
         method: "PUT",
         headers: {

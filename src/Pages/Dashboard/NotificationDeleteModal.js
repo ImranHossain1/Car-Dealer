@@ -23,7 +23,7 @@ const NotificationDeleteModal = ({
   const { subject, _id } = message;
   const handleDelete = () => {
     fetch(
-      `https://car-dealer-server-production.up.railway.app/notification/${_id}`,
+      `https://car-dealer-server-production-4828.up.railway.app/notification/${_id}`,
       {
         method: "DELETE",
         headers: {
