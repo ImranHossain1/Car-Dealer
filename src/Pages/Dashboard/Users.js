@@ -28,7 +28,7 @@ const Users = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://car-dealer-server-production-4828.up.railway.app/users", {
+    fetch("https://car-dealer-server.onrender.com/users", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

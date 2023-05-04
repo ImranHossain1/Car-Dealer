@@ -35,17 +35,14 @@ const Notifications = () => {
     unread: false,
   };
   const handleNotification = (id) => {
-    fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/notification/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(notify),
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/notification/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(notify),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

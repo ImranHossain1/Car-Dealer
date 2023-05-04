@@ -79,17 +79,14 @@ const AddViechels = () => {
             img: img,
           };
           //send data to db
-          fetch(
-            "https://car-dealer-server-production-4828.up.railway.app/vehicle",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(vehicle),
-            }
-          )
+          fetch("https://car-dealer-server.onrender.com/vehicle", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(vehicle),
+          })
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {

@@ -20,16 +20,14 @@ const ConditionalCars = () => {
   }
   useEffect(() => {
     fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}`
+      `https://car-dealer-server.onrender.com/vehicles?page=${page}&size=${size}&condition=${condition}`
     )
       .then((res) => res.json())
       .then((data) => setVehicles(data));
   }, [page, size]);
 
   useEffect(() => {
-    fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/vehicleCount/${condition}`
-    )
+    fetch(`https://car-dealer-server.onrender.com/vehicleCount/${condition}`)
       .then((res) => res.json())
       .then((data) => {
         //console.log(data.count)

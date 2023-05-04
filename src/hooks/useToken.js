@@ -10,16 +10,13 @@ const useToken = (user) => {
       email: email,
     };
     if (email) {
-      fetch(
-        `https://car-dealer-server-production-4828.up.railway.app/user/${email}`,
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
-        }
-      )
+      fetch(`https://car-dealer-server.onrender.com/user/${email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
         .then((res) => res.json())
         .then((data) => {
           const accessToken = data.token;

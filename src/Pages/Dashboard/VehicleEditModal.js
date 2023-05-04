@@ -85,17 +85,14 @@ const VehicleEditModal = ({
       quantity: data.quantity,
     };
     //console.log(vehicle)
-    fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/vehicle/${vehicle._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(updatedVehicle),
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/vehicle/${vehicle._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(updatedVehicle),
+    })
       .then((res) => res.json())
       .then((inserted) => {
         //console.log(inserted)

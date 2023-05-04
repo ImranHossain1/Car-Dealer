@@ -17,17 +17,14 @@ const CheckoutForm = ({ bookedVehicle }) => {
   const [backtoDashboard, setBacktoDashbooard] = useState(false);
   let navigate = useNavigate();
   useEffect(() => {
-    fetch(
-      "https://car-dealer-server-production-4828.up.railway.app/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ cost }),
-      }
-    )
+    fetch("https://car-dealer-server.onrender.com/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ cost }),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -77,17 +74,14 @@ const CheckoutForm = ({ bookedVehicle }) => {
         bookedVehicle: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(
-        `https://car-dealer-server-production-4828.up.railway.app/booking/${_id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: JSON.stringify(payment),
-        }
-      )
+      fetch(`https://car-dealer-server.onrender.com/booking/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
         .then((res) => res.json())
         .then((data) => {
           if (data) {

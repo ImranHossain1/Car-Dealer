@@ -25,15 +25,12 @@ const UserRoleUpdate = ({
   };
   const makeAdmin = () => {
     //console.log(email);
-    fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/user/admin/${email}`,
-      {
-        method: "PUT",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/user/admin/${email}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => {
         if (res.status === 403) {
           toast.error("Failed to make an Admin");

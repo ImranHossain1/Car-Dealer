@@ -104,7 +104,7 @@ const Vehicles = () => {
   };
   useEffect(() => {
     fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`
+      `https://car-dealer-server.onrender.com/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`
     )
       .then((res) => res.json())
       .then((data) => setVehicles(data));
@@ -112,7 +112,7 @@ const Vehicles = () => {
 
   useEffect(() => {
     fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/vehicleCount?condition=${condition}&company=${company}&category=${category}`
+      `https://car-dealer-server.onrender.com/vehicleCount?condition=${condition}&company=${company}&category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {

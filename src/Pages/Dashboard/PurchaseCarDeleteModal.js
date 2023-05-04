@@ -22,15 +22,12 @@ const PurchaseCarDeleteModal = ({
 }) => {
   const { userName, address, phone, cost, _id } = bookedVehicle;
   const handleDelete = () => {
-    fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/bookedVehicle/${_id}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/bookedVehicle/${_id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {

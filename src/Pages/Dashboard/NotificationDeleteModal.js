@@ -22,15 +22,12 @@ const NotificationDeleteModal = ({
 }) => {
   const { subject, _id } = message;
   const handleDelete = () => {
-    fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/notification/${_id}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/notification/${_id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

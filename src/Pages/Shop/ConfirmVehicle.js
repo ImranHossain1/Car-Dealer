@@ -30,7 +30,7 @@ const ConfirmVehicle = () => {
   let navigate = useNavigate();
   const classes = useStyles();
   const { id } = useParams();
-  const url = `https://car-dealer-server-production-4828.up.railway.app/vehicle/${id}`;
+  const url = `https://car-dealer-server.onrender.com/vehicle/${id}`;
   const {
     data: vehicle,
     isLoading,
@@ -57,31 +57,25 @@ const ConfirmVehicle = () => {
     const SubQuantity = {
       quantity: quantity - 1,
     };
-    fetch(
-      `https://car-dealer-server-production-4828.up.railway.app/vehicle/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(SubQuantity),
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/vehicle/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(SubQuantity),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          fetch(
-            "https://car-dealer-server-production-4828.up.railway.app/bookedVehicle",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(confirmBooking),
-            }
-          )
+          fetch("https://car-dealer-server.onrender.com/bookedVehicle", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(confirmBooking),
+          })
             .then((res) => res.json())
             .then((data) => {
               if (data.success) {

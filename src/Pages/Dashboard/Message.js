@@ -18,7 +18,7 @@ const bannerBg = {
 
 const Message = () => {
   const { id } = useParams();
-  const url = `https://car-dealer-server-production-4828.up.railway.app/notification/${id}`;
+  const url = `https://car-dealer-server.onrender.com/notification/${id}`;
 
   const { data: notification, isLoading } = useQuery(["notification", id], () =>
     fetch(url, {
