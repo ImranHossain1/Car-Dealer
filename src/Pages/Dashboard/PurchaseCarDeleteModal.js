@@ -22,12 +22,15 @@ const PurchaseCarDeleteModal = ({
 }) => {
   const { userName, address, phone, cost, _id } = bookedVehicle;
   const handleDelete = () => {
-    fetch(`https://car-dealer-server.onrender.com/bookedVehicle/${_id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/bookedVehicle/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {

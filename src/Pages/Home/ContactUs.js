@@ -45,13 +45,16 @@ const CoontactUs = () => {
       unread: true,
     };
     console.log(mail);
-    fetch("https://car-dealer-server.onrender.com/notification", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(mail),
-    })
+    fetch(
+      "https://car-server-d4s0106ne-imranhossain1.vercel.app/notification",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(mail),
+      }
+    )
       .then((res) => res.json())
       .then((inserted) => {
         if (inserted.insertedId) {

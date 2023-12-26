@@ -34,12 +34,15 @@ const PurchasedCars = () => {
     isLoading,
     refetch,
   } = useQuery(["bookedVehicles"], () =>
-    fetch(`https://car-dealer-server.onrender.com/booking?user=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/booking?user=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
 
   if (loading || isLoading) {

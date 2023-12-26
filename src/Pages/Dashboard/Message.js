@@ -18,7 +18,7 @@ const bannerBg = {
 
 const Message = () => {
   const { id } = useParams();
-  const url = `https://car-dealer-server.onrender.com/notification/${id}`;
+  const url = `https://car-server-d4s0106ne-imranhossain1.vercel.app/notification/${id}`;
 
   const { data: notification, isLoading } = useQuery(["notification", id], () =>
     fetch(url, {

@@ -30,7 +30,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `https://car-dealer-server.onrender.com/booking/${id}`;
+  const url = `https://car-server-d4s0106ne-imranhossain1.vercel.app/booking/${id}`;
   const { data: bookedVehicle, isLoading } = useQuery(["booking", id], () =>
     fetch(url, {
       method: "GET",

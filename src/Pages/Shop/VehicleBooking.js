@@ -20,8 +20,8 @@ const VehicleBooking = () => {
   const { id } = useParams();
   let rating = 0;
   let count = 0;
-  const url = `https://car-dealer-server.onrender.com/vehicle/${id}`;
-  const url2 = `https://car-dealer-server.onrender.com/review/${id}`;
+  const url = `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicle/${id}`;
+  const url2 = `https://car-server-d4s0106ne-imranhossain1.vercel.app/review/${id}`;
   const {
     data: vehicle,
     isLoading,

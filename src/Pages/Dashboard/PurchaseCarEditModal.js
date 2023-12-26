@@ -49,14 +49,17 @@ const PurchaseCardEditModal = ({
       phone: data.phone,
     };
     //console.log(vehicle)
-    fetch(`https://car-dealer-server.onrender.com/bookedVehicle/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(updatedOrder),
-    })
+    fetch(
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/bookedVehicle/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(updatedOrder),
+      }
+    )
       .then((res) => res.json())
       .then((inserted) => {
         //console.log(inserted)

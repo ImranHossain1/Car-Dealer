@@ -20,14 +20,16 @@ const ConditionalCars = () => {
   }
   useEffect(() => {
     fetch(
-      `https://car-dealer-server.onrender.com/vehicles?page=${page}&size=${size}&condition=${condition}`
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicles?page=${page}&size=${size}&condition=${condition}`
     )
       .then((res) => res.json())
       .then((data) => setVehicles(data));
   }, [page, size]);
 
   useEffect(() => {
-    fetch(`https://car-dealer-server.onrender.com/vehicleCount/${condition}`)
+    fetch(
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicleCount/${condition}`
+    )
       .then((res) => res.json())
       .then((data) => {
         //console.log(data.count)

@@ -35,14 +35,17 @@ const Notifications = () => {
     unread: false,
   };
   const handleNotification = (id) => {
-    fetch(`https://car-dealer-server.onrender.com/notification/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(notify),
-    })
+    fetch(
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/notification/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(notify),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

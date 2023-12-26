@@ -104,7 +104,7 @@ const Vehicles = () => {
   };
   useEffect(() => {
     fetch(
-      `https://car-dealer-server.onrender.com/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicles?page=${page}&size=${size}&condition=${condition}&company=${company}&category=${category}`
     )
       .then((res) => res.json())
       .then((data) => setVehicles(data));
@@ -112,7 +112,7 @@ const Vehicles = () => {
 
   useEffect(() => {
     fetch(
-      `https://car-dealer-server.onrender.com/vehicleCount?condition=${condition}&company=${company}&category=${category}`
+      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicleCount?condition=${condition}&company=${company}&category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {
