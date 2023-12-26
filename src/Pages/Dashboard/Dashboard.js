@@ -109,16 +109,13 @@ export default function Dashboard() {
 
   React.useEffect(() => {
     if (user) {
-      fetch(
-        `https://car-server-d4s0106ne-imranhossain1.vercel.app/user/${user.email}`,
-        {
-          method: "GET",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`https://car-dealer-server.onrender.com/user/${user.email}`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => {
           //console.log('res',res);
           if (res.status === 401 || res.status === 403) {

@@ -28,7 +28,7 @@ const Users = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://car-server-d4s0106ne-imranhossain1.vercel.app/users", {
+    fetch("https://car-dealer-server.onrender.com/users", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

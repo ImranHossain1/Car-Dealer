@@ -15,7 +15,7 @@ const PremiumCars = () => {
   const [size, setSize] = useState(4);
   const [vehicles, setVehicles] = useState([]);
   const condition = "Premium";
-  /* const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicles/${condition}`,{
+  /* const {data:vehicles, isLoading, refetch} = useQuery(['PremiumVehicles'], ()=>fetch(`https://car-dealer-server.onrender.com/vehicles/${condition}`,{
         method: 'GET'
     }).then(res=>res.json()));
     if(isLoading){
@@ -23,7 +23,7 @@ const PremiumCars = () => {
     } */
   useEffect(() => {
     fetch(
-      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicles?page=${page}&size=${size}&condition=${condition}`
+      `https://car-dealer-server.onrender.com/vehicles?page=${page}&size=${size}&condition=${condition}`
     )
       .then((res) => res.json())
       .then((data) => setVehicles(data));
@@ -31,7 +31,7 @@ const PremiumCars = () => {
 
   useEffect(() => {
     fetch(
-      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicleCount?condition=${condition}`
+      `https://car-dealer-server.onrender.com/vehicleCount?condition=${condition}`
     )
       .then((res) => res.json())
       .then((data) => {

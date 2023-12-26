@@ -85,17 +85,14 @@ const VehicleEditModal = ({
       quantity: data.quantity,
     };
     //console.log(vehicle)
-    fetch(
-      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicle/${vehicle._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(updatedVehicle),
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/vehicle/${vehicle._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(updatedVehicle),
+    })
       .then((res) => res.json())
       .then((inserted) => {
         //console.log(inserted)

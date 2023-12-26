@@ -22,15 +22,12 @@ const VehicleDeleteModal = ({
 }) => {
   const { vehicleModel, _id } = vehicle;
   const handleDelete = () => {
-    fetch(
-      `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicle/${_id}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`https://car-dealer-server.onrender.com/vehicle/${_id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

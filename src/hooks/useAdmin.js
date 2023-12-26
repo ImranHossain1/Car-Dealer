@@ -5,16 +5,13 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      fetch(
-        `https://car-server-d4s0106ne-imranhossain1.vercel.app/admin/${email}`,
-        {
-          method: "GET",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`https://car-dealer-server.onrender.com/admin/${email}`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setAdmin(data.admin);

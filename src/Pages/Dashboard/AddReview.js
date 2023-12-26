@@ -52,7 +52,7 @@ const AddReview = ({
       rating: rating,
       comment: data.comment,
     };
-    fetch("https://car-server-d4s0106ne-imranhossain1.vercel.app/review", {
+    fetch("https://car-dealer-server.onrender.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

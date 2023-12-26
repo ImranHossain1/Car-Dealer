@@ -72,7 +72,7 @@ const PurchasedCar = ({ bookedVehicle, index, refetch }) => {
   const handlePurchasedCarDeleteClose = () => setOpenDelete(false);
   useEffect(() => {
     fetch(
-      `https://car-server-d4s0106ne-imranhossain1.vercel.app/review?carId=${carId}&userEmail=${userEmail}`
+      `https://car-dealer-server.onrender.com/review?carId=${carId}&userEmail=${userEmail}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -84,7 +84,7 @@ const PurchasedCar = ({ bookedVehicle, index, refetch }) => {
       });
   }, [carId, userEmail, reviewUpdate]);
 
-  const url = `https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicle/${carId}`;
+  const url = `https://car-dealer-server.onrender.com/vehicle/${carId}`;
   const { data: vehicle, isLoading } = useQuery(["vehicle", carId], () =>
     fetch(url, {
       method: "GET",

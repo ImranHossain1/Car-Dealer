@@ -7,9 +7,9 @@ const useVehicles = () => {
     isLoading,
     refetch,
   } = useQuery("vehicles", () =>
-    fetch(
-      "https://car-server-d4s0106ne-imranhossain1.vercel.app/vehicles"
-    ).then((res) => res.json())
+    fetch("https://car-dealer-server.onrender.com/vehicles").then((res) =>
+      res.json()
+    )
   );
   return [vehicles, isLoading, refetch];
 };
